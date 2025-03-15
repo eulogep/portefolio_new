@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euloge Mabiala - Certifications & Diplômes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000814;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        /* Navigation Fixe */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 8, 20, 0.9);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 2px solid #00e6ff;
+            box-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00e6ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: white;
+            text-shadow: 0 0 15px #00e6ff;
+        }
+
+        section {
+            text-align: center;
+            padding: 60px 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #00e6ff;
+            text-shadow: 0 0 10px #00e6ff;
+        }
+        .certifications-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .certification-card {
+            background-color: rgba(13, 27, 42, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            height: 350px;
+            box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .certification-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
+        }
+        .certification-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<!-- MENU DE NAVIGATION FIXE -->
+<nav>
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="experience.html">Expériences</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="passions.html">Passions</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+    </ul>
+</nav>
+
+<section>
+    <h1>Certifications & Diplômes</h1>
+    <div class="certifications-container">
+
+        <!-- Certification Java en PDF -->
+        <div class="certification-card">
+            <iframe src="java_basic_certificate.pdf" width="100%" height="200px"></iframe>
+            <h2>Certification Java</h2>
+            <p>Compétences avancées en développement Java et conception d’applications.</p>
+            <a href="java_basic_certificate.pdf" download>📥 Télécharger</a>
+        </div>
+
+        <!-- Certification Five Guys (image PNG) -->
+        <div class="certification-card">
+            <img src="Certificate.png" alt="Certification en restauration rapide">
+            <h2>Certification FIVE GUYS</h2>
+            <p>Compétence en restauration rapide.</p>
+        </div>
+
+        <!-- Certification R en PDF -->
+        <div class="certification-card">
+            <iframe src="r_basic_certificate.pdf" width="100%" height="200px"></iframe>
+            <h2>Certification R</h2>
+            <p>Maîtrise des fondamentaux du langage R.</p>
+            <a href="r_basic_certificate.pdf" download>📥 Télécharger</a>
+        </div>
+
+        <!-- Diplôme d'Ingénieur (image PNG) -->
+        <div class="certification-card">
+            <img src="diplome_engineering.png" alt="Diplôme Ingénierie">
+            <h2>Diplôme d'Ingénieur ESIEA</h2>
+            <p>Formation en ingénierie informatique avec spécialisation en cybersécurité.</p>
+        </div>
+
+        <!-- Certification SQL en PDF -->
+        <div class="certification-card">
+            <iframe src="sql_basic_certificate.pdf" width="100%" height="200px"></iframe>
+            <h2>Certification en SQL</h2>
+            <p>Maîtrise des fondamentaux du langage SQL.</p>
+            <a href="sql_basic_certificate.pdf" download>📥 Télécharger</a>
+        </div>
+
+        <!-- Baccalauréat (image PNG) -->
+        <div class="certification-card">
+            <img src="diplome_bac.png" alt="Baccalauréat">
+            <h2>Baccalauréat Scientifique</h2>
+            <p>Spécialités : Mathématiques, Physique-Chimie. Mention Assez-Bien.</p>
+        </div>
+
+    </div>
+</section>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.zIndex = '-1';
+
+        const particlesArray = [];
+        const numberOfParticles = 120;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = '#00e6ff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    });
+</script>
+
+</body>
+</html>

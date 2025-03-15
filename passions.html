@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euloge Mabiala - Passions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        /* Effet de transition sur l'apparition du contenu */
+        body {
+            animation: fadeIn 1s ease-in-out;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000814;
+            color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 80px; /* Ajoute un espace pour éviter que le menu ne cache le contenu */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Menu de navigation fixe */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 8, 20, 0.9);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 2px solid #00e6ff;
+            box-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00e6ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: white;
+            text-shadow: 0 0 15px #00e6ff;
+        }
+
+        /* Section des passions */
+        section {
+            text-align: center;
+            padding: 60px 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #00e6ff;
+            text-shadow: 0 0 10px #00e6ff;
+        }
+
+        /* Conteneur des cartes */
+        .passions-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Carte des passions */
+        .passion-card {
+            background-color: rgba(13, 27, 42, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            width: 250px;
+            height: 320px;
+            box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .passion-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
+        }
+
+        .passion-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- MENU DE NAVIGATION FIXE -->
+<nav>
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="experience.html">Expériences</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="passions.html">Passions</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- SECTION DES PASSIONS -->
+<section>
+    <h1>Mes Passions</h1>
+    <div class="passions-container">
+
+        <div class="passion-card">
+            <img src="images/BASKETBALL.jpg" alt="Basketball">
+            <h2>Basketball</h2>
+            <p>Un sport qui me passionne et m'aide à développer l'esprit d'équipe.</p>
+        </div>
+
+        <div class="passion-card">
+            <img src="images/DANCEHIPHOP.jpg" alt="Danse">
+            <h2>Danse</h2>
+            <p>Pratique du Hip-Hop, Popping, Afro et Valse.</p>
+        </div>
+
+        <div class="passion-card">
+            <img src="images/CINEMA.jpg" alt="Cinéma">
+            <h2>Cinéma</h2>
+            <p>Expérience en tant que figurant dans des films indépendants.</p>
+        </div>
+
+        <div class="passion-card">
+            <img src="images/JUDO.jpg" alt="Judo">
+            <h2>Judo</h2>
+            <p>Discipline qui m'a appris la rigueur et la maîtrise de soi.</p>
+        </div>
+
+        <div class="passion-card">
+            <img src="images/GAMING.jpg" alt="Jeux vidéo">
+            <h2>Jeux vidéo</h2>
+            <p>Passionné par le game design et l'expérience utilisateur.</p>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>
