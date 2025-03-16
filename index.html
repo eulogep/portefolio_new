@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Euloge Mabiala - Portfolio Futuriste</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -14,17 +15,20 @@
             color: #ffffff;
             overflow: hidden;
             position: relative;
+            padding-top: 80px; /* Pour éviter que le menu ne cache le contenu */
         }
-        body {
-            animation: fadeIn 1s ease-in-out;
-        }
+
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Navigation fixe sur toutes les pages */
+        body {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* MENU FIXE */
         nav {
             position: fixed;
             top: 0;
@@ -76,7 +80,7 @@
 
         header {
             text-align: center;
-            padding: 120px 20px 60px; /* Ajustement pour éviter que le menu cache le contenu */
+            padding: 100px 20px 60px;
             position: relative;
             z-index: 1;
         }
@@ -105,11 +109,18 @@
             cursor: pointer;
             box-shadow: 0 0 20px rgba(0, 230, 255, 0.6);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
         }
 
         .button:hover {
             transform: scale(1.1);
             box-shadow: 0 0 30px rgba(0, 230, 255, 0.8);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(0, 230, 255, 0.6); }
+            50% { box-shadow: 0 0 30px rgba(0, 230, 255, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(0, 230, 255, 0.6); }
         }
 
         img.profile-img {
@@ -123,27 +134,38 @@
     </style>
 </head>
 <body>
+
+<!-- MENU DE NAVIGATION FIXE -->
 <nav>
     <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="formation.html">Formation</a></li>
         <li><a href="experience.html">Expériences</a></li>
         <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
         <li><a href="certifications.html">Certifications</a></li>
         <li><a href="passions.html">Passions</a></li>
         <li><a href="contacts.html">Contact</a></li>
     </ul>
 </nav>
+
 <canvas id="canvas"></canvas>
+
 <header>
     <img src="photo_euloge.jpg" alt="Euloge Mabiala" class="profile-img">
     <h1>Euloge Mabiala</h1>
     <p class="subtitle">Étudiant Ingénieur en Cybersécurité & Développement Logiciel</p>
-    <button class="button" onclick="window.location.href='competences.html'">Découvrir mon profil</button>
+    <button class="button" onclick="startTransition()">Découvrir mon profil</button>
 </header>
-</body>
-</html>
+
 <script>
+    function startTransition() {
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+            window.location.href = "competences.html";
+        }, 800);
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
@@ -151,12 +173,7 @@
         canvas.height = window.innerHeight;
 
         const particlesArray = [];
-        const planets = [
-            { img: 'earth.png', x: 200, y: 150, size: 80, speed: 0.2 },
-            { img: 'mars.png', x: 500, y: 300, size: 60, speed: 0.15 },
-            { img: 'jupiter.png', x: 800, y: 100, size: 120, speed: 0.1 },
-            { img: 'saturn.png', x: 1100, y: 400, size: 100, speed: 0.12 }
-        ];
+        const numberOfParticles = 120;
 
         class Particle {
             constructor() {
@@ -177,24 +194,26 @@
                 ctx.fill();
             }
         }
+
         function init() {
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < numberOfParticles; i++) {
                 particlesArray.push(new Particle());
             }
         }
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesArray.forEach(p => { p.update(); p.draw(); });
-            planets.forEach(planet => {
-                let img = new Image();
-                img.src = planet.img;
-                ctx.drawImage(img, planet.x, planet.y, planet.size, planet.size);
-                planet.x += planet.speed;
-                if (planet.x > canvas.width) planet.x = -planet.size;
+            particlesArray.forEach(particle => {
+                particle.update();
+                particle.draw();
             });
             requestAnimationFrame(animate);
         }
+
         init();
         animate();
     });
 </script>
+
+</body>
+</html>
