@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Euloge Mabiala - Compétences Futuristes</title>
+    <title>Euloge Mabiala - Compétences Techniques</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000814;
+            color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 80px;
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -15,15 +24,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #000814;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        /* Navigation Fixe */
         nav {
             position: fixed;
             top: 0;
@@ -39,15 +39,11 @@
 
         nav ul {
             list-style: none;
-            padding: 0;
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             gap: 30px;
-        }
-
-        nav ul li {
-            display: inline;
         }
 
         nav ul li a {
@@ -67,9 +63,8 @@
         section {
             text-align: center;
             padding: 60px 20px;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
         }
+
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 3rem;
@@ -77,41 +72,59 @@
             color: #00e6ff;
             text-shadow: 0 0 10px #00e6ff;
         }
+
+        .competences-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
         .competence-card {
-            display: inline-block;
-            background-color: rgba(13, 27, 42, 0.8);
+            background-color: rgba(13, 27, 42, 0.85);
             border-radius: 15px;
             padding: 20px;
-            margin: 15px;
-            width: 200px;
-            height: 200px;
-            box-shadow: 0 0 25px rgba(0, 230, 255, 0.4);
-            transition: transform 0.3s ease;
+            width: 220px;
+            height: 240px;
+            box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
+
         .competence-card:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px rgba(0, 230, 255, 0.6);
+            transform: scale(1.08);
+            box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
         }
+
         .competence-icon {
-            font-size: 10rem;
-            margin-bottom: 15px;
+            font-size: 4rem;
+            margin-bottom: 10px;
             color: #00e6ff;
         }
-        h2 {
+
+        .competence-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.4rem;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-
 </head>
+
 <body>
-<!-- MENU DE NAVIGATION FIXE -->
+
 <nav>
     <ul>
         <li><a href="index.html">Accueil</a></li>
@@ -123,54 +136,56 @@
         <li><a href="contacts.html">Contact</a></li>
     </ul>
 </nav>
+
+<canvas id="particles-canvas"></canvas>
+
 <section>
     <h1>Compétences Techniques</h1>
 
-    <div class="competence-card">
-        <i class="fas fa-shield-alt competence-icon"></i>
-        <p>Cybersécurité</p>
-    </div>
+    <div class="competences-container">
 
-    <div class="competence-card">
-        <i class="fab fa-python competence-icon"></i>
-        <p>Python</p>
-    </div>
+        <div class="competence-card">
+            <i class="fas fa-shield-alt competence-icon"></i>
+            <div class="competence-title">Cybersécurité</div>
+        </div>
 
-    <div class="competence-card">
-        <i class="fab fa-java competence-icon"></i>
-        <p>Java</p>
-    </div>
+        <div class="competence-card">
+            <i class="fab fa-python competence-icon"></i>
+            <div class="competence-title">Python</div>
+        </div>
 
-    <div class="competence-card">
-        <i class="fab fa-js competence-icon"></i>
-        <p>JavaScript</p>
-    </div>
+        <div class="competence-card">
+            <i class="fab fa-java competence-icon"></i>
+            <div class="competence-title">Java</div>
+        </div>
 
-    <div class="competence-card">
-        <i class="fab fa-react competence-icon"></i>
-        <p>React</p>
-    </div>
+        <div class="competence-card">
+            <i class="fab fa-js competence-icon"></i>
+            <div class="competence-title">JavaScript</div>
+        </div>
 
-    <div class="competence-card">
-        <i class="fas fa-network-wired competence-icon"></i>
-        <p>Cybersécurité</p>
-    </div>
+        <div class="competence-card">
+            <i class="fab fa-react competence-icon"></i>
+            <div class="competence-title">React</div>
+        </div>
 
+        <div class="competence-card">
+            <i class="fas fa-database competence-icon"></i>
+            <div class="competence-title">SQL</div>
+        </div>
+
+    </div>
 </section>
+
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-        const canvas = document.createElement('canvas');
-        document.body.appendChild(canvas);
+        const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
-        canvas.style.position = 'fixed';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        canvas.style.zIndex = '-1';
 
         const particlesArray = [];
-        const numberOfParticles = 120;
+        const numberOfParticles = 100;
 
         class Particle {
             constructor() {
@@ -183,9 +198,8 @@
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
-                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
-                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
             }
             draw() {
                 ctx.fillStyle = '#00e6ff';
@@ -203,9 +217,9 @@
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesArray.forEach(particle => {
-                particle.update();
-                particle.draw();
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
             });
             requestAnimationFrame(animate);
         }
@@ -219,5 +233,6 @@
         });
     });
 </script>
+
 </body>
 </html>

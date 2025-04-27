@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Euloge Mabiala - Projets</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="projets.css">
+
 
     <style>
         body {
@@ -143,6 +145,7 @@
     </style>
 </head>
 <body>
+<div id="loader"></div>
 
 <!-- MENU DE NAVIGATION FIXE -->
 <nav>
@@ -159,42 +162,79 @@
 </nav>
 
 <section>
-    <h1>Mes Projets</h1>
 
-    <div class="projects-container">
+    <header class="section-scroll">
+        <h1>Mes Projets</h1>
+        <p>Voici quelques-uns de mes projets réalisés.</p>
+    </header>
+    <main>
+        <div class="projects-container">
 
-        <!-- Prototype Figma -->
-        <div class="project-card">
-            <h2>Prototype Figma - Better Together</h2>
-            <p>Accédez et testez directement notre prototype interactif conçu sur Figma.</p>
-            <div class="button-container">
-                <a href="https://www.figma.com/proto/Hd7NYkeueo8cpSuUhVXt9D/Better-together?node-id=8-2&p=f&t=bVInsC26lueGzwyd-1&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=8%3A2" target="_blank" class="project-button">Exécuter</a>
-                <a href="https://www.figma.com/file/Hd7NYkeueo8cpSuUhVXt9D/Better-together?node-id=0%3A1" target="_blank" class="project-button">Voir le Code</a>
+            <!-- Prototype Figma -->
+            <div class="project-card">
+                <h2>Prototype Figma - Better Together</h2>
+                <p>Accédez et testez directement notre prototype interactif conçu sur Figma.</p>
+                <div class="button-container">
+                    <a href="https://www.figma.com/proto/Hd7NYkeueo8cpSuUhVXt9D/Better-together?node-id=8-2&p=f&t=bVInsC26lueGzwyd-1&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=8%3A2" target="_blank" class="project-button">Exécuter</a>
+                    <a href="https://www.figma.com/file/Hd7NYkeueo8cpSuUhVXt9D/Better-together?node-id=0%3A1" target="_blank" class="project-button">Voir le Code</a>
+                </div>
+            </div>
+
+            <!-- Projet Playlist C -->
+            <div class="project-card">
+                <h2>Gestion de Playlists en C</h2>
+                <p>Développement d’un gestionnaire de playlists en C dans un projet collaboratif avec GitLab.</p>
+                <div class="button-container">
+                    <a href="MBT.pptx" download class="project-button">Exécuter</a>
+                    <a href="https://github.com/ton-github/projet-playlist" target="_blank" class="project-button">Voir le Code</a>
+                </div>
+            </div>
+
+            <!-- Jeu du Pendu -->
+            <div class="project-card">
+                <h2>Développement d’un Jeu du Pendu</h2>
+                <p>Programmation d’un jeu du pendu en C avec gestion des fichiers et programmation modulaire.</p>
+                <div class="button-container">
+                    <a href="main.exe" download class="project-button">Exécuter</a>
+                    <a href="https://github.com/eulogep/jeux-du-pendu" target="_blank" class="project-button">Voir le Code</a>
+                </div>
+            </div>
+
+            <!-- === Projet : Double Calculatrice Responsive === -->
+            <div class="project-card">
+                <h2>Double Calculatrice Responsive</h2>
+                <p>
+                    Développement d'une double calculatrice en HTML, CSS et JS,
+                    avec animation de fond et sauvegarde automatique avec LocalStorage.
+                </p>
+                <div class="project-buttons">
+                    <a href="projets/double-calculator/index.html" target="_blank" class="btn">Exécuter</a>
+                    <a href="https://gitlab.esiea.fr/webdev-2025-bergeronludovic-belotthomas-jiangyvan/tp1-calculator/-/tree/Euloge/euloge-version/double-calculator" target="_blank" class="btn">Voir le Code</a>
+                </div>
             </div>
         </div>
+    </main>
 
-        <!-- Projet Playlist C -->
-        <div class="project-card">
-            <h2>Gestion de Playlists en C</h2>
-            <p>Développement d’un gestionnaire de playlists en C dans un projet collaboratif avec GitLab.</p>
-            <div class="button-container">
-                <a href="MBT.pptx" download class="project-button">Exécuter</a>
-                <a href="https://github.com/ton-github/projet-playlist" target="_blank" class="project-button">Voir le Code</a>
-            </div>
-        </div>
-
-        <!-- Jeu du Pendu -->
-        <div class="project-card">
-            <h2>Développement d’un Jeu du Pendu</h2>
-            <p>Programmation d’un jeu du pendu en C avec gestion des fichiers et programmation modulaire.</p>
-            <div class="button-container">
-                <a href="main.exe" download class="project-button">Exécuter</a>
-                <a href="https://github.com/eulogep/jeux-du-pendu" target="_blank" class="project-button">Voir le Code</a>
-            </div>
-        </div>
-
-    </div>
 </section>
+
+<script>
+    const elements = document.querySelectorAll('.section-scroll');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+    elements.forEach(el => observer.observe(el));
+</script>
+
+<script>
+    window.addEventListener('load', () => {
+        document.getElementById('loader').style.display = 'none';
+    });
+</script>
+
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         const canvas = document.createElement('canvas');
@@ -254,6 +294,93 @@
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+        });
+    });
+</script>
+
+<script>
+    const elements = document.querySelectorAll('.section-scroll');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    elements.forEach(el => observer.observe(el));
+</script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '-1';
+        canvas.style.pointerEvents = 'none'; // Evite que le canvas bloque des clics
+
+        // Redimensionnement dynamique
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Particules
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1.5 - 0.75;
+                this.speedY = Math.random() * 1.5 - 0.75;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = '#00e6ff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray.length = 0;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // ✅ Animation parallax lors du scroll
+        window.addEventListener('scroll', () => {
+            const offset = window.scrollY * 0.08; // Plus c'est bas, plus c'est subtil
+            canvas.style.transform = `translateY(${offset}px)`;
         });
     });
 </script>

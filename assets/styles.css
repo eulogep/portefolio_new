@@ -7,15 +7,8 @@ body {
     color: #ffffff;
     text-align: center;
 }
-body {
-    animation: fadeIn 1s ease-in-out;
-}
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-/* MENU FIXE */
+/* Menu fixe */
 nav {
     position: fixed;
     top: 0;
@@ -23,23 +16,17 @@ nav {
     width: 100%;
     background: rgba(0, 8, 20, 0.9);
     padding: 15px 0;
-    text-align: center;
     z-index: 1000;
     border-bottom: 2px solid #00e6ff;
     box-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     justify-content: center;
+    list-style: none;
+    padding: 0;
     gap: 30px;
-}
-
-nav ul li {
-    display: inline;
 }
 
 nav ul li a {
@@ -50,23 +37,19 @@ nav ul li a {
     padding: 10px 15px;
     transition: 0.3s;
 }
-
 nav ul li a:hover {
     color: white;
     text-shadow: 0 0 15px #00e6ff;
 }
 
-/* Ajout d'un espace sous le menu pour éviter qu'il ne cache le contenu */
+/* Ajouter un espace sous le menu */
 body {
-    padding-top: 80px; /* Ajuste la hauteur pour ne pas masquer le contenu sous le menu */
+    padding-top: 80px;
 }
-
-
 
 /* En-tête */
 header {
     padding: 20px;
-    text-align: center;
 }
 h1 {
     font-family: 'Orbitron', sans-serif;
@@ -91,44 +74,82 @@ h1 {
     background: #005f99;
 }
 
-/* Styles spécifiques aux cartes */
-.formation-card {
+/* Sections animées */
+.section-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Cartes de formation ou projet */
+.project-card, .formation-card, .certification-card {
     background-color: rgba(13, 27, 42, 0.8);
     border-radius: 15px;
     padding: 20px;
     margin: 20px auto;
-    max-width: 600px;
     box-shadow: 0 0 15px rgba(0, 230, 255, 0.4);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.formation-card:hover {
+.project-card:hover, .formation-card:hover, .certification-card:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
 }
+
+/* Certifications en flex */
 .certifications-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
-.certification-card {
-    background-color: rgba(13, 27, 42, 0.9);
-    border-radius: 15px;
-    padding: 20px;
-    width: 300px;
-    height: 350px;
-    box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.certification-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
-}
 .certification-card img {
     width: 100px;
     height: 100px;
     border-radius: 10px;
     margin-bottom: 15px;
+}
+
+/* Boutons projets */
+.project-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.project-buttons .btn {
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    background: #00e6ff;
+    color: #0d1b2a;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+.project-buttons .btn:hover {
+    background: #005f99;
+}
+/* Loader */
+#loader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#000814, #0d1b2a);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #00e6ff;
+    font-family: 'Orbitron', sans-serif;
+    animation: fadeLoader 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeLoader {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
 }

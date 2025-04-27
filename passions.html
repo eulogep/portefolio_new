@@ -6,24 +6,20 @@
     <title>Euloge Mabiala - Passions</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
     <style>
-        /* Effet de transition sur l'apparition du contenu */
         body {
-            animation: fadeIn 1s ease-in-out;
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #000814;
+            background: #000814;
             color: #ffffff;
             overflow-x: hidden;
-            padding-top: 80px; /* Ajoute un espace pour éviter que le menu ne cache le contenu */
+            animation: fadeIn 1s ease-in-out;
+            padding-top: 80px;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* Menu de navigation fixe */
         nav {
             position: fixed;
             top: 0;
@@ -36,20 +32,17 @@
             border-bottom: 2px solid #00e6ff;
             box-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
         }
-
         nav ul {
             list-style: none;
-            padding: 0;
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             gap: 30px;
         }
-
         nav ul li {
             display: inline;
         }
-
         nav ul li a {
             text-decoration: none;
             color: #00e6ff;
@@ -58,20 +51,14 @@
             padding: 10px 15px;
             transition: 0.3s;
         }
-
         nav ul li a:hover {
             color: white;
             text-shadow: 0 0 15px #00e6ff;
         }
-
-        /* Section des passions */
         section {
             text-align: center;
             padding: 60px 20px;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
         }
-
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 3rem;
@@ -79,18 +66,14 @@
             color: #00e6ff;
             text-shadow: 0 0 10px #00e6ff;
         }
-
-        /* Conteneur des cartes */
         .passions-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
         }
-
-        /* Carte des passions */
         .passion-card {
-            background-color: rgba(13, 27, 42, 0.9);
+            background: rgba(13, 27, 42, 0.9);
             border-radius: 15px;
             padding: 20px;
             width: 250px;
@@ -101,24 +84,23 @@
             flex-direction: column;
             align-items: center;
         }
-
         .passion-card:hover {
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
         }
-
         .passion-card img {
             width: 100px;
             height: 100px;
             border-radius: 10px;
             margin-bottom: 15px;
+            object-fit: cover;
         }
-
     </style>
 </head>
+
 <body>
 
-<!-- MENU DE NAVIGATION FIXE -->
+<!-- MENU NAVIGATION -->
 <nav>
     <ul>
         <li><a href="index.html">Accueil</a></li>
@@ -131,43 +113,42 @@
     </ul>
 </nav>
 
-<!-- SECTION DES PASSIONS -->
+<!-- SECTION PASSIONS -->
 <section>
     <h1>Mes Passions</h1>
     <div class="passions-container">
-
         <div class="passion-card">
             <img src="images/BASKETBALL.jpg" alt="Basketball">
             <h2>Basketball</h2>
-            <p>Un sport qui me passionne et m'aide à développer l'esprit d'équipe.</p>
+            <p>Un sport qui m'apprend l'esprit d'équipe et la persévérance.</p>
         </div>
 
         <div class="passion-card">
             <img src="images/DANCEHIPHOP.jpg" alt="Danse">
             <h2>Danse</h2>
-            <p>Pratique du Hip-Hop, Popping, Afro et Valse.</p>
+            <p>Hip-Hop, Popping, Afro et Valse : un moyen d'exprimer la créativité.</p>
         </div>
 
         <div class="passion-card">
             <img src="images/CINEMA.jpg" alt="Cinéma">
             <h2>Cinéma</h2>
-            <p>Expérience en tant que figurant dans des films indépendants.</p>
+            <p>Figurant dans des films indépendants, passionné par l’art visuel.</p>
         </div>
 
         <div class="passion-card">
             <img src="images/JUDO.jpg" alt="Judo">
             <h2>Judo</h2>
-            <p>Discipline qui m'a appris la rigueur et la maîtrise de soi.</p>
+            <p>La rigueur, la discipline et la maîtrise de soi au quotidien.</p>
         </div>
 
         <div class="passion-card">
-            <img src="images/GAMING.jpg" alt="Jeux vidéo">
-            <h2>Jeux vidéo</h2>
-            <p>Passionné par le game design et l'expérience utilisateur.</p>
+            <img src="images/GAMING.jpg" alt="Gaming">
+            <h2>Jeux Vidéo</h2>
+            <p>Passionné par le game design et l'univers numérique immersif.</p>
         </div>
-
     </div>
 </section>
+
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         const canvas = document.createElement('canvas');
@@ -181,7 +162,7 @@
         canvas.style.zIndex = '-1';
 
         const particlesArray = [];
-        const numberOfParticles = 120;
+        const numberOfParticles = 100;
 
         class Particle {
             constructor() {
@@ -194,7 +175,6 @@
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
                 if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
                 if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
             }
@@ -231,6 +211,79 @@
     });
 </script>
 
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.createElement('canvas');
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '-1';
+        canvas.style.pointerEvents = 'none'; // Evite que le canvas bloque des clics
+
+        // Redimensionnement dynamique
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Particules
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1.5 - 0.75;
+                this.speedY = Math.random() * 1.5 - 0.75;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = '#00e6ff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray.length = 0;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // ✅ Animation parallax lors du scroll
+        window.addEventListener('scroll', () => {
+            const offset = window.scrollY * 0.08; // Plus c'est bas, plus c'est subtil
+            canvas.style.transform = `translateY(${offset}px)`;
+        });
+    });
+</script>
 
 </body>
 </html>

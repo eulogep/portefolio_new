@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Euloge Mabiala - Expériences Futuristes</title>
+    <title>Euloge Mabiala - Expériences Professionnelles</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -13,8 +14,15 @@
             background-color: #000814;
             color: #ffffff;
             overflow-x: hidden;
+            padding-top: 80px;
+            animation: fadeIn 1s ease-in-out;
         }
-        /* Navigation Fixe */
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         nav {
             position: fixed;
             top: 0;
@@ -30,15 +38,11 @@
 
         nav ul {
             list-style: none;
-            padding: 0;
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             gap: 30px;
-        }
-
-        nav ul li {
-            display: inline;
         }
 
         nav ul li a {
@@ -55,61 +59,69 @@
             text-shadow: 0 0 15px #00e6ff;
         }
 
-        canvas {
+        section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #00e6ff;
+            text-shadow: 0 0 10px #00e6ff;
+        }
+
+        .experience-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .experience-card {
+            background-color: rgba(13, 27, 42, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            height: 360px;
+            box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .experience-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
+        }
+
+        .experience-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .experience-card p {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+
+        #particles-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-        }
-        section {
-            text-align: center;
-            padding: 60px 20px;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards;
-        }
-        h1, h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: #00e6ff;
-            text-shadow: 0 0 10px #00e6ff;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 40px;
-        }
-        .experience-card {
-            background-color: rgba(13, 27, 42, 0.9);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 600px;
-            box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
-            transition: transform 0.3s ease;
-        }
-        .experience-card:hover {
-            transform: scale(1.05);
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            pointer-events: none;
         }
     </style>
 </head>
+
 <body>
-<!-- MENU DE NAVIGATION FIXE -->
-<nav>
-    <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="formation.html">Formation</a></li>
-        <li><a href="experience.html">Expériences</a></li>
-        <li><a href="competences.html">Compétences</a></li>
-        <li><a href="certifications.html">Certifications</a></li>
-        <li><a href="passions.html">Passions</a></li>
-        <li><a href="contacts.html">Contact</a></li>
-    </ul>
-</nav>
-<canvas id="canvas"></canvas>
 
 <nav>
     <ul>
@@ -122,48 +134,50 @@
         <li><a href="contacts.html">Contact</a></li>
     </ul>
 </nav>
+
+<canvas id="particles-canvas"></canvas>
 
 <section>
     <h1>Expériences Professionnelles</h1>
 
-    <div class="experience-card">
-        <i class="fas fa-utensils experience-icon"></i>
-        <h2>Équipier polyvalent</h2>
-        <p><strong>Five Guys</strong> – Paris (2024-2025)<br>
-            - Préparation des commandes et service client.<br>
-            - Gestion du stress et du travail en équipe dans un environnement dynamique.<br>
-            - Respect des normes d’hygiène et de sécurité.</p>
-    </div>
+    <div class="experience-container">
 
-    <div class="experience-card">
-        <i class="fas fa-project-diagram experience-icon"></i>
-        <h2>Assistant Projet</h2>
-        <p>Événement « Essaimées » – Collaboration entre ingénieurs et artistes<br>
-            - Programmation et automatisation avec LabVIEW.<br>
-            - Développement d’installations interactives intégrant des capteurs et des contrôleurs.<br>
-            - Travail d’équipe entre ingénieurs et artistes pour concevoir des œuvres innovantes.</p>
-    </div>
+        <div class="experience-card">
+            <h2>Équipier polyvalent</h2>
+            <p><strong>Five Guys</strong> – Paris (2024-2025)</p>
+            <p>- Préparation des commandes et service client.</p>
+            <p>- Gestion du stress et du travail d’équipe.</p>
+            <p>- Respect des normes d’hygiène et sécurité.</p>
+        </div>
 
-    <div class="experience-card">
-        <i class="fas fa-laptop-code experience-icon"></i>
-        <h2>Stage Technique</h2>
-        <p>- Participation à un projet de développement logiciel en **Python et Java.<br>
-            - Implémentation de solutions pour la gestion de bases de données en SQL.<br>
-            - Utilisation de Git/GitHub pour la gestion de versions et collaboration en équipe.<br>
-            - Optimisation d’algorithmes pour améliorer la rapidité d'exécution des applications.</p>
-    </div>
+        <div class="experience-card">
+            <h2>Assistant Projet</h2>
+            <p>Événement « Essaimées »</p>
+            <p>- Programmation LabVIEW.</p>
+            <p>- Développement d’installations interactives.</p>
+            <p>- Collaboration ingénieurs / artistes.</p>
+        </div>
 
+        <div class="experience-card">
+            <h2>Stage Technique</h2>
+            <p>- Développement Python / Java.</p>
+            <p>- Gestion de bases de données SQL.</p>
+            <p>- Utilisation de Git / GitHub.</p>
+            <p>- Optimisation d’algorithmes.</p>
+        </div>
+
+    </div>
 </section>
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-        const canvas = document.getElementById('canvas');
+        const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         const particlesArray = [];
-        const numberOfParticles = 150;
+        const numberOfParticles = 100;
 
         class Particle {
             constructor() {
@@ -176,9 +190,8 @@
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
-                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
-                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
             }
             draw() {
                 ctx.fillStyle = '#00e6ff';
@@ -196,9 +209,9 @@
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesArray.forEach(particle => {
-                particle.update();
-                particle.draw();
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
             });
             requestAnimationFrame(animate);
         }
@@ -212,5 +225,6 @@
         });
     });
 </script>
+
 </body>
 </html>
