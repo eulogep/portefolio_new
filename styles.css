@@ -1,0 +1,50 @@
+/* Styles généraux */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: radial-gradient(#0d1b2a, #000814);
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Menu fixe */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 8, 20, 0.9);
+    padding: 15px 0;
+    z-index: 1000;
+    border-bottom: 2px solid #00e6ff;
+    box-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #00e6ff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+nav ul li a:hover {
+    color: white;
+    text-shadow: 0 0 15px #00e6ff;
+}
+
+/* Ajouter un espace sous le menu */
+body {
+    padding-top: 80px;
+}
+
+/* En-tête */

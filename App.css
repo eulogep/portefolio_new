@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Cyberpunk theme colors */
+  --background: #000814;
+  --foreground: #ffffff;
+  --card: #0d1b2a;
+  --card-foreground: #ffffff;
+  --popover: #0d1b2a;
+  --popover-foreground: #ffffff;
+  --primary: #00e6ff;
+  --primary-foreground: #000814;
+  --secondary: #005f99;
+  --secondary-foreground: #ffffff;
+  --muted: #1b263b;
+  --muted-foreground: #a8dadc;
+  --accent: #00e6ff;
+  --accent-foreground: #000814;
+  --destructive: #ff006e;
+  --border: #00e6ff;
+  --input: #1b263b;
+  --ring: #00e6ff;
+  --chart-1: #00e6ff;
+  --chart-2: #005f99;
+  --chart-3: #ff006e;
+  --chart-4: #8ecae6;
+  --chart-5: #219ebc;
+  --sidebar: #0d1b2a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00e6ff;
+  --sidebar-primary-foreground: #000814;
+  --sidebar-accent: #005f99;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #00e6ff;
+  --sidebar-ring: #00e6ff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background: radial-gradient(ellipse at center, #0d1b2a 0%, #000814 100%);
+    min-height: 100vh;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 230, 255, 0.5); }
+  50% { box-shadow: 0 0 30px rgba(0, 230, 255, 0.8); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #00e6ff; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-typing {
+  overflow: hidden;
+  border-right: .15em solid #00e6ff;
+  white-space: nowrap;
+  letter-spacing: .15em;
+  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+/* Particle background */
+.particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(13, 27, 42, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 230, 255, 0.2);
+}
+
+/* Neon text effect */
+.neon-text {
+  color: #00e6ff;
+  text-shadow: 
+    0 0 5px #00e6ff,
+    0 0 10px #00e6ff,
+    0 0 15px #00e6ff,
+    0 0 20px #00e6ff;
+}
+
+/* Hover effects */
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1b2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00e6ff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #005f99;
+}
+
