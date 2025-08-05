@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euloge Mabiala - Certifications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000814;
+            color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 80px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 8, 20, 0.9);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 2px solid #00e6ff;
+            box-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00e6ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: white;
+            text-shadow: 0 0 15px #00e6ff;
+        }
+
+        section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: #00e6ff;
+            text-shadow: 0 0 10px #00e6ff;
+            margin-bottom: 40px;
+        }
+
+        .certifications-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .certification-card {
+            background-color: rgba(13, 27, 42, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            height: 380px;
+            box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .certification-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
+        }
+
+        .certification-card img, .certification-card iframe {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            background: #0d1b2a;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .certification-card h2 {
+            font-size: 1.4rem;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .certification-card p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .certification-card a {
+            color: #00e6ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .certification-card a:hover {
+            text-decoration: underline;
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="experience.html">Expériences</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="passions.html">Passions</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+    </ul>
+</nav>
+
+<canvas id="particles-canvas"></canvas>
+
+<section>
+    <h1>Certifications & Diplômes</h1>
+
+    <div class="certifications-container">
+
+        <div class="certification-card">
+            <iframe src="java_basic_certificate.pdf"></iframe>
+            <h2>Certification Java</h2>
+            <p>Développement Java avancé.</p>
+            <a href="java_basic_certificate.pdf" download>📥 Télécharger</a>
+        </div>
+
+        <div class="certification-card">
+            <img src="Certificate.png" alt="Five Guys">
+            <h2>Certification Five Guys</h2>
+            <p>Service client & restauration rapide.</p>
+        </div>
+
+        <div class="certification-card">
+            <iframe src="r_basic_certificate.pdf"></iframe>
+            <h2>Certification R</h2>
+            <p>Analyse de données avec R.</p>
+            <a href="r_basic_certificate.pdf" download>📥 Télécharger</a>
+        </div>
+
+        <div class="certification-card">
+            <img src="diplome_engineering.png" alt="Diplôme Ingénieur">
+            <h2>Diplôme d'Ingénieur</h2>
+            <p>Informatique & Cybersécurité.</p>
+        </div>
+
+        <div class="certification-card">
+            <iframe src="sql_basic_certificate.pdf"></iframe>
+            <h2>Certification SQL</h2>
+            <p>Langage SQL et bases de données.</p>
+            <a href="sql_basic_certificate.pdf" download>📥 Télécharger</a>
+        </div>
+
+        <div class="certification-card">
+            <iframe src="baccalauréat2.pdf"></iframe>
+            <h2>Baccalauréat</h2>
+            <p>Mathématiques & Physique-Chimie.</p>
+            <a href="baccalauréat2.pdf" download>📥 Télécharger</a>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1.5 - 0.75;
+                this.speedY = Math.random() * 1.5 - 0.75;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = '#00e6ff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Animation Parallax léger
+        window.addEventListener('scroll', () => {
+            const offset = window.scrollY * 0.05;
+            canvas.style.transform = `translateY(${offset}px)`;
+        });
+    });
+</script>
+
+</body>
+</html>

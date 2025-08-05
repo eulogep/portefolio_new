@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Double Calculatrice ESIEA</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" type="module" defer></script> <!-- Déplacer main.js en bas pour éviter les bugs -->
+
+    <!-- Fond animé -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div id="particles-js"></div>
+
+<!-- Bouton toggle thème -->
+<button id="theme-toggle">🌓</button>
+
+<header>
+    <img src="logo-esiea.png" class="logo" alt="Logo ESIEA" />
+    <h1>Double Calculatrice</h1>
+    <p>
+        Bienvenue à dans ma calculatrice  entierement faite pour des calculs simples parole Euloge Mabiala
+        <a href="#">HTML</a> + <a href="#">CSS</a> + <a href="#">JS</a> !
+    </p>
+</header>
+
+<main class="calculators-wrapper">
+    <!-- Calculette 1 -->
+    <section class="calculator" id="calc1">
+        <input class="operand operand1" readonly value="0" />
+        <div class="keypad">
+            <button class="key" data-key="Del">Del</button>
+            <button class="key" data-key="C">C</button>
+            <button class="key" data-key="1">1</button>
+            <button class="key" data-key="2">2</button>
+            <button class="key" data-key="3">3</button>
+            <button class="key" data-key="4">4</button>
+            <button class="key" data-key="5">5</button>
+            <button class="key" data-key="6">6</button>
+            <button class="key" data-key="7">7</button>
+            <button class="key" data-key="8">8</button>
+            <button class="key" data-key="9">9</button>
+            <button class="key" data-key="-">-</button>
+            <button class="key" data-key="0">0</button>
+            <button class="key" data-key=".">.</button>
+        </div>
+    </section>
+
+    <!-- Bloc opérateurs -->
+    <section class="operator-pad">
+        <div class="operators">
+            <button class="op-btn" data-op="+">+</button>
+            <button class="op-btn" data-op="-">-</button>
+            <button class="op-btn" data-op="*">*</button>
+            <button class="op-btn" data-op="/">/</button>
+        </div>
+        <button id="equals" class="equals">=</button>
+        <output id="result" class="result">0</output>
+    </section>
+
+    <!-- Calculette 2 -->
+    <section class="calculator" id="calc2">
+        <input class="operand operand2" readonly value="0" />
+        <div class="keypad">
+            <button class="key" data-key="Del">Del</button>
+            <button class="key" data-key="C">C</button>
+            <button class="key" data-key="1">1</button>
+            <button class="key" data-key="2">2</button>
+            <button class="key" data-key="3">3</button>
+            <button class="key" data-key="4">4</button>
+            <button class="key" data-key="5">5</button>
+            <button class="key" data-key="6">6</button>
+            <button class="key" data-key="7">7</button>
+            <button class="key" data-key="8">8</button>
+            <button class="key" data-key="9">9</button>
+            <button class="key" data-key="-">-</button>
+            <button class="key" data-key="0">0</button>
+            <button class="key" data-key=".">.</button>
+        </div>
+    </section>
+</main>
+
+<!-- Boutons Save/Restore -->
+<div class="actions">
+    <button id="save-btn">Save Locally</button>
+    <button id="restore-btn">Restore</button>
+</div>
+
+<!-- Initialisation Particles.js -->
+<script>
+    particlesJS("particles-js", {
+        particles: {
+            number: { value: 70, density: { enable: true, value_area: 900 }},
+            color: { value: "#1e88e5" },
+            shape: { type: "circle" },
+            opacity: { value: 0.4 },
+            size: { value: 3 },
+            line_linked: {
+                enable: true, distance: 130, color: "#1e88e5", opacity: 0.3, width: 1
+            },
+            move: { enable: true, speed: 3 }
+        },
+        interactivity: {
+            events: {
+                onhover: { enable: true, mode: "grab" },
+                onclick: { enable: true, mode: "push" }
+            },
+            modes: {
+                grab: { distance: 150, line_linked: { opacity: 1 }},
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+</script>
+
+</body>
+</html>

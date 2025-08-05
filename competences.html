@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euloge Mabiala - Compétences Techniques</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000814;
+            color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 80px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 8, 20, 0.9);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 2px solid #00e6ff;
+            box-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00e6ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: white;
+            text-shadow: 0 0 15px #00e6ff;
+        }
+
+        section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #00e6ff;
+            text-shadow: 0 0 10px #00e6ff;
+        }
+
+        .competences-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .competence-card {
+            background-color: rgba(13, 27, 42, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            width: 220px;
+            height: 240px;
+            box-shadow: 0 0 20px rgba(0, 230, 255, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .competence-card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
+        }
+
+        .competence-icon {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: #00e6ff;
+        }
+
+        .competence-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="experience.html">Expériences</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="passions.html">Passions</a></li>
+        <li><a href="contacts.html">Contact</a></li>
+    </ul>
+</nav>
+
+<canvas id="particles-canvas"></canvas>
+
+<section>
+    <h1>Compétences Techniques</h1>
+
+    <div class="competences-container">
+
+        <div class="competence-card">
+            <i class="fas fa-shield-alt competence-icon"></i>
+            <div class="competence-title">Cybersécurité</div>
+        </div>
+
+        <div class="competence-card">
+            <i class="fab fa-python competence-icon"></i>
+            <div class="competence-title">Python</div>
+        </div>
+
+        <div class="competence-card">
+            <i class="fab fa-java competence-icon"></i>
+            <div class="competence-title">Java</div>
+        </div>
+
+        <div class="competence-card">
+            <i class="fab fa-js competence-icon"></i>
+            <div class="competence-title">JavaScript</div>
+        </div>
+
+        <div class="competence-card">
+            <i class="fab fa-react competence-icon"></i>
+            <div class="competence-title">React</div>
+        </div>
+
+        <div class="competence-card">
+            <i class="fas fa-database competence-icon"></i>
+            <div class="competence-title">SQL</div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = '#00e6ff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    });
+</script>
+
+</body>
+</html>
