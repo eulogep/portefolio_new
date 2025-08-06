@@ -1,3 +1,9 @@
+/**
+ * Contact Section - Portfolio Euloge Mabiala
+ * Auteur: MABIALA EULOGE JUNIOR
+ * Email: mabiala@et.esiea.fr
+ */
+
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -43,8 +49,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'euloge.mabiala@example.com',
-      link: 'mailto:euloge.mabiala@example.com'
+      value: 'mabiala@et.esiea.fr',
+      link: 'mailto:mabiala@et.esiea.fr'
     },
     {
       icon: Phone,
@@ -82,7 +88,7 @@ const Contact = () => {
     {
       icon: Mail,
       name: 'Email',
-      url: 'mailto:euloge.mabiala@example.com',
+      url: 'mailto:mabiala@et.esiea.fr',
       color: 'hover:text-red-400'
     }
   ];

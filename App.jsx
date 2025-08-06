@@ -1,3 +1,13 @@
+/**
+ * Portfolio Professionnel - Euloge Mabiala
+ * 
+ * Auteur: MABIALA EULOGE JUNIOR
+ * Email: mabiala@et.esiea.fr
+ * 
+ * Portfolio moderne et interactif développé avec React
+ * présentant les compétences en cybersécurité et développement logiciel
+ */
+
 import { useState, useEffect } from 'react';
 import './App.css';
 

@@ -1,3 +1,9 @@
+/**
+ * About Section - Portfolio Euloge Mabiala
+ * Auteur: MABIALA EULOGE JUNIOR
+ * Email: mabiala@et.esiea.fr
+ */
+
 import { GraduationCap, Shield, Code, Brain } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 

@@ -1,3 +1,9 @@
+/**
+ * Projects Section - Portfolio Euloge Mabiala
+ * Auteur: MABIALA EULOGE JUNIOR
+ * Email: mabiala@et.esiea.fr
+ */
+
 import { useState } from 'react';
 import { ExternalLink, Github, Eye, Code, Shield, Smartphone, Globe } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';

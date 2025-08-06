@@ -1,3 +1,9 @@
+/**
+ * Hero Section - Portfolio Euloge Mabiala
+ * Auteur: MABIALA EULOGE JUNIOR
+ * Email: mabiala@et.esiea.fr
+ */
+
 import { useState, useEffect } from 'react';
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
