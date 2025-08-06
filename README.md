@@ -180,15 +180,30 @@ Le portfolio est entièrement responsive avec des breakpoints optimisés :
 
 ## 🌐 Déploiement
 
-Le portfolio est déployé sur : **https://igkufcbi.manus.space**
+Le portfolio est déployé sur : **https://eulogep.github.io/portfolio**
+
+### Déploiement Automatique (GitHub Pages)
+Le projet utilise GitHub Actions pour un déploiement automatique. À chaque push sur la branche `main`, le site est automatiquement déployé.
 
 ### Déploiement Local
 ```bash
-# Build de production
-pnpm run build
+# Installation des dépendances
+npm install
 
-# Le dossier dist/ contient les fichiers prêts pour le déploiement
+# Build de production
+npm run build
+
+# Déploiement manuel
+npm run deploy
 ```
+
+### Configuration GitHub Pages
+1. Allez dans les paramètres du repository (Settings)
+2. Scrollez jusqu'à la section "Pages"
+3. Dans "Source", sélectionnez "GitHub Actions"
+4. Le workflow se déclenchera automatiquement
+
+Pour plus de détails, consultez le [Guide de Déploiement](DEPLOYMENT.md).
 
 ### Plateformes de Déploiement Supportées
 - **Vercel** (recommandé)
