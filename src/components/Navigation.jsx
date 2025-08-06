@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Home, User, Briefcase, Award, Heart, FolderOpen, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from './ui/button';
 import ThemeToggle from './ThemeToggle';
 
 const Navigation = ({ activeSection, onSectionChange }) => {
