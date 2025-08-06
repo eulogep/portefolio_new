@@ -1,6 +1,6 @@
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
-import { Card, CardContent } from '../../ui/card';
-import { Badge } from '../../ui/badge';
+import { Card, CardContent } from '../ui/card';
+import { Badge } from '../ui/badge';
 
 const Experience = () => {
   const experiences = [

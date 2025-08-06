@@ -5,7 +5,7 @@
  */
 
 import { GraduationCap, Shield, Code, Brain } from 'lucide-react';
-import { Card, CardContent } from '../../ui/card';
+import { Card, CardContent } from '../ui/card';
 
 const About = () => {
   const highlights = [

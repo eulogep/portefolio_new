@@ -6,7 +6,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
-import { Button } from '../../ui/button';
+import { Button } from '../ui/button';
 import profileImage from '../../assets/photo_euloge.jpg';
 
 const Hero = ({ onSectionChange }) => {

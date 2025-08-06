@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Code, Shield, Database, Globe, Server, Smartphone, Award } from 'lucide-react';
-import { Card, CardContent } from '../../ui/card';
-import { Progress } from '../../ui/progress';
+import { Card, CardContent } from '../ui/card';
+import { Progress } from '../ui/progress';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('development');
