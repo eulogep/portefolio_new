@@ -52,9 +52,9 @@ function App() {
       <main>
         <Hero onSectionChange={handleSectionChange} />
         <About />
-        <Experience />
-        <Skills />
-        <Projects />
+        <ExperienceEnhanced />
+        <SkillsEnhanced />
+        <ProjectsEnhanced />
         <Contact />
       </main>
     </div>
