@@ -18,9 +18,9 @@ import LoadingScreen from './components/LoadingScreen';
 import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
-import Experience from './components/sections/Experience';
-import Skills from './components/sections/Skills';
-import Projects from './components/sections/Projects';
+import ExperienceEnhanced from './components/sections/ExperienceEnhanced';
+import SkillsEnhanced from './components/sections/SkillsEnhanced';
+import ProjectsEnhanced from './components/sections/ProjectsEnhanced';
 import Contact from './components/sections/Contact';
 
 function App() {
