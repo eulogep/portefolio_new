@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import React, { useState, useEffect, useRef } from 'react';
 import ThemeToggle from './ThemeToggle';
 
 const STORAGE_KEY = 'floatingThemePos_v1';
