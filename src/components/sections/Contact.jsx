@@ -11,6 +11,7 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
+import * as emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,16 +34,38 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+    setSubmitStatus(null);
+
+    try {
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+      if (!publicKey || !serviceId || !templateId) {
+        throw new Error('EmailJS non configuré: service_id et template_id requis');
+      }
+
+      emailjs.init(publicKey);
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'mabiala@et.esiea.fr'
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams);
+
       setSubmitStatus('success');
-      setIsSubmitting(false);
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000);
-    }, 1500);
+    } catch (err) {
+      console.error(err);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 4000);
+    }
   };
 
   const contactInfo = [
@@ -55,8 +78,8 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Téléphone',
-      value: '+33 6 XX XX XX XX',
-      link: 'tel:+33600000000'
+      value: '+33 7 60 83 09 31',
+      link: 'tel:+33760830931'
     },
     {
       icon: MapPin,
@@ -204,6 +227,13 @@ const Contact = () => {
                     </p>
                   </div>
                 )}
+                {submitStatus === 'error' && (
+                  <div className="text-center p-4 bg-red-500/20 border border-red-500/30 rounded-lg">
+                    <p className="text-red-400 font-medium">
+                      Impossible d'envoyer le message. Vérifiez la configuration EmailJS ou réessayez plus tard.
+                    </p>
+                  </div>
+                )}
               </form>
             </CardContent>
           </Card>
@@ -289,4 +319,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
