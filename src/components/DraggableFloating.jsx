@@ -55,7 +55,8 @@ const DraggableFloating = () => {
     const el = ref.current;
     if (!el) return;
     draggingRef.current = true;
-    el.setPointerCapture(e.pointerId);
+    setIsDragging(true);
+    try { el.setPointerCapture(e.pointerId); } catch (err) {}
     const rect = el.getBoundingClientRect();
     offsetRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
   };
@@ -72,6 +73,7 @@ const DraggableFloating = () => {
   const onPointerUp = (e) => {
     if (!draggingRef.current) return;
     draggingRef.current = false;
+    setIsDragging(false);
     const el = ref.current;
     try { el.releasePointerCapture(e.pointerId); } catch (err) {}
     // save position
