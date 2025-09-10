@@ -27,6 +27,10 @@ const DraggableFloating = () => {
       setDefaultPos();
     }
 
+    // load locked state
+    const lockedVal = localStorage.getItem(STORAGE_KEY + '_locked');
+    if (lockedVal === '1') setLocked(true);
+
     function onResize() {
       clampPosition();
     }
