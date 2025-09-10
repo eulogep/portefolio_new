@@ -7,7 +7,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-gradient-to-r from-primary/80 to-secondary/70 text-primary-foreground shadow-[0_8px_30px_rgba(0,230,255,0.08)] hover:from-primary/90 hover:to-secondary/90",
+        glass: "backdrop-blur-sm bg-card/40 border border-primary/20 text-primary hover:translate-y-[-2px] hover:shadow-glow",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -43,4 +44,4 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
 })
 Button.displayName = "Button"
 
-export { Button, buttonVariants } 
+export { Button, buttonVariants }
