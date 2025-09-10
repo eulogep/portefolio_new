@@ -51,18 +51,37 @@ const DraggableFloating = () => {
     });
   };
 
+  const pendingRef = useRef(null);
+  const START_THRESHOLD = 6; // px
+
   const onPointerDown = (e) => {
     const el = ref.current;
     if (!el) return;
-    draggingRef.current = true;
-    setIsDragging(true);
-    try { el.setPointerCapture(e.pointerId); } catch (err) {}
+    // Save initial pointer to detect move vs click
+    pendingRef.current = { startX: e.clientX, startY: e.clientY, pointerId: e.pointerId };
+    // compute offset relative to element so that when dragging starts we can keep cursor position
     const rect = el.getBoundingClientRect();
     offsetRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
   };
 
   const onPointerMove = (e) => {
+    // If a pending pointer exists but actual drag hasn't started, check threshold
+    if (pendingRef.current && !draggingRef.current) {
+      const dx = e.clientX - pendingRef.current.startX;
+      const dy = e.clientY - pendingRef.current.startY;
+      if (Math.sqrt(dx * dx + dy * dy) >= START_THRESHOLD) {
+        // start dragging
+        const el = ref.current;
+        draggingRef.current = true;
+        setIsDragging(true);
+        try { el.setPointerCapture(pendingRef.current.pointerId); } catch (err) {}
+      } else {
+        return; // not enough movement
+      }
+    }
+
     if (!draggingRef.current) return;
+
     const newLeft = e.clientX - offsetRef.current.x;
     const newTop = e.clientY - offsetRef.current.y;
     const clampedLeft = Math.min(Math.max(8, newLeft), Math.max(8, window.innerWidth - SIZE - 8));
@@ -71,15 +90,18 @@ const DraggableFloating = () => {
   };
 
   const onPointerUp = (e) => {
-    if (!draggingRef.current) return;
-    draggingRef.current = false;
-    setIsDragging(false);
-    const el = ref.current;
-    try { el.releasePointerCapture(e.pointerId); } catch (err) {}
-    // save position
-    if (pos.left != null && pos.top != null) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ left: pos.left, top: pos.top }));
+    // If we were dragging, finalize
+    if (draggingRef.current) {
+      draggingRef.current = false;
+      setIsDragging(false);
+      const el = ref.current;
+      try { el.releasePointerCapture(e.pointerId); } catch (err) {}
+      if (pos.left != null && pos.top != null) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ left: pos.left, top: pos.top }));
+      }
     }
+    // Clean pending state
+    pendingRef.current = null;
   };
 
   return (
