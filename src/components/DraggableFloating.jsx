@@ -85,10 +85,10 @@ const DraggableFloating = () => {
   return (
     <div
       ref={ref}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerUp}
+      onPointerDownCapture={onPointerDown}
+      onPointerMoveCapture={onPointerMove}
+      onPointerUpCapture={onPointerUp}
+      onPointerCancelCapture={onPointerUp}
       style={{
         position: 'fixed',
         left: pos.left != null ? pos.left + 'px' : undefined,
@@ -97,7 +97,7 @@ const DraggableFloating = () => {
         width: SIZE + 'px',
         height: SIZE + 'px',
         touchAction: 'none',
-        cursor: 'grab'
+        cursor: isDragging ? 'grabbing' : 'grab'
       }}
       className="rounded-full"
     >
