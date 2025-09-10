@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-
 import React, { useRef, useEffect } from 'react';
 
 const ParticleBackground = () => {
@@ -21,13 +19,13 @@ const ParticleBackground = () => {
       canvas.height = Math.floor(window.innerHeight * dpr);
       canvas.style.width = `${window.innerWidth}px`;
       canvas.style.height = `${window.innerHeight}px`;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     const createParticles = () => {
       particles = [];
       const area = window.innerWidth * window.innerHeight;
-      let numberOfParticles = Math.floor(area / 20000); // tuned for performance
+      let numberOfParticles = Math.floor(area / 20000);
       numberOfParticles = Math.max(20, Math.min(220, numberOfParticles));
 
       for (let i = 0; i < numberOfParticles; i++) {
@@ -48,7 +46,6 @@ const ParticleBackground = () => {
       const dy = p.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < mouse.radius) {
-        // repulse effect
         const force = (mouse.radius - dist) / mouse.radius;
         const angle = Math.atan2(dy, dx);
         p.speedX += Math.cos(angle) * force * 0.6;
@@ -59,7 +56,6 @@ const ParticleBackground = () => {
     const drawParticles = () => {
       ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
 
-      // draw connections first with lower opacity
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         for (let j = i + 1; j < particles.length; j++) {
@@ -80,24 +76,19 @@ const ParticleBackground = () => {
       }
 
       particles.forEach((particle) => {
-        // Apply small friction to velocities
         particle.speedX *= 0.995;
         particle.speedY *= 0.995;
 
-        // Interact with mouse
         interactWithMouse(particle);
 
-        // Update position
         particle.x += particle.speedX;
         particle.y += particle.speedY;
 
-        // Wrap edges for a smoother effect
         if (particle.x < -10) particle.x = window.innerWidth + 10;
         if (particle.x > window.innerWidth + 10) particle.x = -10;
         if (particle.y < -10) particle.y = window.innerHeight + 10;
         if (particle.y > window.innerHeight + 10) particle.y = -10;
 
-        // Draw particle with gradient glow
         const grad = ctx.createRadialGradient(particle.x, particle.y, 0, particle.x, particle.y, Math.max(8, particle.size * 6));
         grad.addColorStop(0, `rgba(0,230,255,${particle.opacity})`);
         grad.addColorStop(0.6, `rgba(0,230,255,${particle.opacity * 0.15})`);
@@ -115,7 +106,6 @@ const ParticleBackground = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    // Event handlers
     const handleResize = () => {
       resizeCanvas();
       createParticles();
@@ -136,7 +126,6 @@ const ParticleBackground = () => {
       const rect = canvas.getBoundingClientRect();
       const burstX = e.clientX - rect.left;
       const burstY = e.clientY - rect.top;
-      // create small burst of particles
       for (let i = 0; i < 8; i++) {
         particles.push({
           x: burstX,
@@ -147,26 +136,22 @@ const ParticleBackground = () => {
           opacity: 0.9,
         });
       }
-      // cap particles
       if (particles.length > 400) particles.splice(0, particles.length - 400);
     };
 
-    // Initialize
-    resizeCanvas();
-    createParticles();
-    animate();
-
-    // Listeners
-    window.addEventListener('resize', handleResize);
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
-    canvas.addEventListener('click', handleClick);
-
-    // Pause animation when tab is hidden
     const handleVisibility = () => {
       if (document.hidden) cancelAnimationFrame(animationFrameId);
       else animate();
     };
+
+    resizeCanvas();
+    createParticles();
+    animate();
+
+    window.addEventListener('resize', handleResize);
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
+    canvas.addEventListener('click', handleClick);
     document.addEventListener('visibilitychange', handleVisibility);
 
     return () => {
