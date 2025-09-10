@@ -43,32 +43,48 @@ function App() {
   // Update activeSection based on scroll position
   useEffect(() => {
     const ids = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter((el) => !!el);
+    let observer;
 
-    const visibility = new Map();
+    const bind = () => {
+      const elements = ids
+        .map((id) => document.getElementById(id))
+        .filter((el) => !!el);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          visibility.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
-        });
-        let bestId = activeSection;
-        let bestRatio = 0;
-        visibility.forEach((ratio, id) => {
-          if (ratio > bestRatio) {
-            bestRatio = ratio;
-            bestId = id;
-          }
-        });
-        if (bestId && bestId !== activeSection) setActiveSection(bestId);
-      },
-      { root: null, rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
-    );
+      const visibility = new Map();
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            visibility.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+          });
+          let bestId = activeSection;
+          let bestRatio = 0;
+          visibility.forEach((ratio, id) => {
+            if (ratio > bestRatio) {
+              bestRatio = ratio;
+              bestId = id;
+            }
+          });
+          if (bestId && bestId !== activeSection) setActiveSection(bestId);
+        },
+        { root: null, rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+      );
+
+      elements.forEach((el) => observer.observe(el));
+    };
+
+    bind();
+
+    const onLazyMounted = () => {
+      if (observer) observer.disconnect();
+      bind();
+    };
+    window.addEventListener('lazy-section-mounted', onLazyMounted);
+
+    return () => {
+      window.removeEventListener('lazy-section-mounted', onLazyMounted);
+      if (observer) observer.disconnect();
+    };
   }, [activeSection]);
 
   if (isLoading) {
