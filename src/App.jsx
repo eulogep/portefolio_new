@@ -17,6 +17,7 @@ import Navigation from './components/Navigation';
 import LoadingScreen from './components/LoadingScreen';
 import ScrollToTop from './components/ScrollToTop';
 import ThemeToggle from './components/ThemeToggle';
+import DraggableFloating from './components/DraggableFloating';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import ExperienceEnhanced from './components/sections/ExperienceEnhanced';
