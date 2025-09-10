@@ -6,6 +6,30 @@
 
 @layer base {
   :root {
+    /* Light theme (default) */
+    --background: #ffffff;
+    --foreground: #0b1220;
+    --card: #f1f5f9;
+    --card-foreground: #0b1220;
+    --popover: #ffffff;
+    --popover-foreground: #0b1220;
+    --primary: #00e6ff;
+    --primary-foreground: #001018;
+    --secondary: #0ea5e9;
+    --secondary-foreground: #ffffff;
+    --muted: #e2e8f0;
+    --muted-foreground: #475569;
+    --accent: #06b6d4;
+    --accent-foreground: #001018;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #94a3b8;
+    --input: #e2e8f0;
+    --ring: #0ea5e9;
+    --radius: 0.625rem;
+  }
+  .dark {
+    /* Dark theme */
     --background: #000814;
     --foreground: #ffffff;
     --card: #0d1b2a;
@@ -33,10 +57,26 @@
   * {
     @apply border-border;
   }
+  html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground;
     font-family: 'Roboto', sans-serif;
-    background: radial-gradient(ellipse at center, #0d1b2a 0%, #000814 100%);
     min-height: 100vh;
+    background: radial-gradient(ellipse at center, rgba(13,27,42,0.06) 0%, rgba(0,8,20,0.03) 100%);
   }
-} 
+  .dark body {
+    background: radial-gradient(ellipse at center, #0d1b2a 0%, #000814 100%);
+  }
+  section { scroll-margin-top: 96px; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+  }
+}
