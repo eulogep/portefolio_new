@@ -60,7 +60,6 @@ const Navigation = ({ activeSection, onSectionChange }) => {
                   </button>
                 );
               })}
-              <ThemeToggle />
             </div>
 
             {/* Mobile Menu Button */}
