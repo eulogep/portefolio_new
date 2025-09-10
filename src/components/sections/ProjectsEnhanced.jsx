@@ -19,11 +19,131 @@ const ProjectsEnhanced = () => {
   const projects = [
     {
       id: 1,
-      title: 'Double Calculator',
-      description: 'Calculatrice avancée avec interface moderne et fonctionnalités étendues pour calculs complexes',
+      title: 'Plateforme Solutions Afrique',
+      description: "Web‑app qui recense les problèmes en Afrique, propose des projets et gère des investissements avec dashboard d'analyse",
       category: 'web',
-      technologies: ['JavaScript', 'HTML5', 'CSS3', 'Responsive Design'],
+      technologies: ['Flask', 'SQLite', 'JavaScript', 'Dashboard', 'Glassmorphism'],
+      image: '/images/web.jpg',
+      github: 'https://github.com/eulogep',
+      demo: '#',
+      featured: true,
+      status: 'En développement',
+      duration: '4 mois',
+      team: 'Solo',
+      highlights: [
+        'Gestion des problèmes et des projets',
+        'Système d’investissement avec analytics',
+        'UI glassmorphism performante'
+      ],
+      metrics: {
+        modules: '10+',
+        perf: 'Lighthouse 90+',
+        db: 'SQLite'
+      }
+    },
+    {
+      id: 2,
+      title: 'Classeur Numérique Intelligent',
+      description: 'Gestion documentaire hybride (Electron/Supabase) avec OCR, classification intelligente et recherche avancée',
+      category: 'web',
+      technologies: ['Electron', 'Supabase', 'React', 'Node/Express', 'Tesseract.js'],
+      image: '/images/project3NUMERIQUE.jpg',
+      github: 'https://github.com/eulogep',
+      demo: '#',
+      featured: true,
+      status: 'En développement',
+      duration: '3 mois',
+      team: 'Solo',
+      highlights: [
+        'OCR via Tesseract.js',
+        'Classification auto et recherche avancée',
+        'Stockage Supabase sécurisé'
+      ],
+      metrics: {
+        docs: '5k+',
+        accuracy: '92% OCR',
+        latency: '<200ms'
+      }
+    },
+    {
+      id: 3,
+      title: 'Blockchain Certificate Vault dApp',
+      description: 'Émission, vérification et gestion de certificats via smart‑contracts et IPFS avec front React moderne',
+      category: 'security',
+      technologies: ['Vite', 'React', 'Tailwind', 'Ethers.js', 'OpenZeppelin', 'IPFS'],
+      image: '/images/project4NUMERIQUE.jpg',
+      github: 'https://github.com/eulogep',
+      demo: '#',
+      featured: true,
+      status: 'En développement',
+      duration: '2 mois',
+      team: 'Solo',
+      highlights: [
+        'Contrats sécurisés OpenZeppelin',
+        'Stockage décentralisé IPFS',
+        'Vérification rapide des certificats'
+      ],
+      metrics: {
+        tx: '100+',
+        cost: 'Optimisé',
+        audit: 'en cours'
+      }
+    },
+    {
+      id: 4,
+      title: 'DEX Swap App',
+      description: 'Interface de swap (ETH, USDC, DAI, WBTC, USDT) sur Uniswap v3 avec simulation de slippage et design néon',
+      category: 'web',
+      technologies: ['React 18', 'Ethers.js', 'Uniswap v3', 'Tailwind', 'Voice Onboarding'],
       image: '/images/project1NUMERIQUE.jpg',
+      github: 'https://github.com/eulogep',
+      demo: '#',
+      featured: false,
+      status: 'En développement',
+      duration: '2 mois',
+      team: 'Solo',
+      highlights: [
+        'Simulation de slippage en temps réel',
+        'Design néon/glassmorphism fluide',
+        'Onboarding vocal'
+      ],
+      metrics: {
+        pairs: '5+',
+        fps: '60fps UI',
+        latency: '<150ms'
+      }
+    },
+    {
+      id: 5,
+      title: 'Simulateur d’Attaque Brute Force',
+      description: 'Outil pédagogique pour calculer la robustesse d’un mot de passe et simuler des attaques (CPU/GPU/cluster)',
+      category: 'security',
+      technologies: ['Web Workers', 'Charting', 'HIBP API', 'React'],
+      image: '/images/cybersecuritycertification.jpg',
+      github: 'https://github.com/eulogep',
+      demo: '#',
+      featured: false,
+      status: 'Terminé',
+      duration: '1.5 mois',
+      team: 'Solo',
+      highlights: [
+        'Graphiques interactifs',
+        'Conseils de sécurité dynamiques',
+        'Simulation fuite de données'
+      ],
+      metrics: {
+        breaches: 'Pwned API',
+        threads: 'Multi‑workers',
+        tips: 'contextuels'
+      }
+    },
+    {
+      id: 6,
+      title: 'Double Calculatrice Pro',
+      description: 'Calculatrice web multirôle (standard, scientifique, financier, convertisseur) avec reco vocale et thèmes',
+      category: 'web',
+      technologies: ['HTML', 'CSS', 'JavaScript', 'Chart.js'],
+      image: '/images/project2NUMERIQUE.jpg',
       github: 'https://github.com/eulogep/double-calculator',
       demo: '#',
       featured: true,
@@ -31,140 +151,62 @@ const ProjectsEnhanced = () => {
       duration: '2 mois',
       team: 'Solo',
       highlights: [
-        'Interface utilisateur intuitive et moderne',
-        'Support des calculs scientifiques avancés',
-        'Historique des calculs avec sauvegarde locale',
-        'Design responsive pour tous les appareils'
+        'Reconnaissance vocale',
+        'Thèmes dynamiques',
+        'Historique intelligent'
       ],
       metrics: {
-        lines: '1,200+',
-        functions: '25+',
-        tests: '95%'
+        modes: '4',
+        tests: '95%',
+        perf: 'Lighthouse 90+'
       }
     },
     {
-      id: 2,
-      title: 'Système de Sécurité IoT',
-      description: 'Solution complète de sécurité pour objets connectés avec monitoring temps réel et alertes',
+      id: 7,
+      title: 'Bruteforce Tool (v1)',
+      description: 'App éducative avec règles personnalisables, support GPU via Hashcat et API REST Flask',
       category: 'security',
-      technologies: ['Python', 'IoT', 'Cryptographie', 'MongoDB', 'MQTT', 'Docker'],
-      image: '/images/cybersecuritycertification.jpg',
-      github: '#',
-      demo: '#',
-      featured: true,
-      status: 'En développement',
-      duration: '4 mois',
-      team: '3 personnes',
-      highlights: [
-        'Chiffrement end-to-end des communications',
-        'Dashboard de monitoring en temps réel',
-        'Système d\'alertes automatisé',
-        'Architecture microservices scalable'
-      ],
-      metrics: {
-        devices: '50+',
-        uptime: '99.9%',
-        alerts: '24/7'
-      }
-    },
-    {
-      id: 3,
-      title: 'Application Mobile Sécurisée',
-      description: 'App mobile avec authentification biométrique et chiffrement end-to-end pour communications',
-      category: 'mobile',
-      technologies: ['React Native', 'Node.js', 'JWT', 'Biométrie', 'SQLite', 'WebRTC'],
-      image: '/images/project2NUMERIQUE.jpg',
-      github: '#',
-      demo: '#',
-      featured: false,
-      status: 'Version Beta',
-      duration: '3 mois',
-      team: '2 personnes',
-      highlights: [
-        'Authentification biométrique (empreinte, visage)',
-        'Chiffrement AES-256 des données',
-        'Chat sécurisé avec auto-destruction',
-        'Interface Material Design 3.0'
-      ],
-      metrics: {
-        users: '100+',
-        security: 'A+',
-        rating: '4.8/5'
-      }
-    },
-    {
-      id: 4,
-      title: 'Dashboard Analytics',
-      description: 'Tableau de bord interactif pour l\'analyse de données de sécurité avec visualisations avancées',
-      category: 'web',
-      technologies: ['React', 'D3.js', 'Python', 'PostgreSQL', 'WebSockets', 'Chart.js'],
+      technologies: ['Flask', 'Hashcat', 'React', 'Tailwind'],
       image: '/images/project3NUMERIQUE.jpg',
-      github: '#',
+      github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
-      status: 'Terminé',
-      duration: '2.5 mois',
-      team: 'Solo',
-      highlights: [
-        'Visualisations interactives en temps réel',
-        'Support de millions de points de données',
-        'Exportation multi-formats (PDF, CSV, PNG)',
-        'Tableaux de bord personnalisables'
-      ],
-      metrics: {
-        data: '1M+ points',
-        charts: '15 types',
-        performance: '<100ms'
-      }
-    },
-    {
-      id: 5,
-      title: 'Audit de Sécurité Automatisé',
-      description: 'Outil d\'audit automatique pour détecter les vulnérabilités web selon les standards OWASP',
-      category: 'security',
-      technologies: ['Python', 'Selenium', 'OWASP', 'Docker', 'Redis', 'FastAPI'],
-      image: '/images/project4NUMERIQUE.jpg',
-      github: '#',
-      demo: '#',
-      featured: true,
-      status: 'Production',
-      duration: '5 mois',
-      team: '4 personnes',
-      highlights: [
-        'Détection automatique de 200+ types de vulnérabilités',
-        'Rapports PDF détaillés avec recommandations',
-        'Intégration CI/CD pipeline',
-        'API REST pour intégrations tierces'
-      ],
-      metrics: {
-        scans: '1000+',
-        vulnerabilities: '200+ types',
-        accuracy: '97%'
-      }
-    },
-    {
-      id: 6,
-      title: 'Portfolio Interactif',
-      description: 'Site portfolio avec animations avancées, design futuriste et optimisations performance',
-      category: 'web',
-      technologies: ['React', 'Tailwind', 'Framer Motion', 'Vite', 'Three.js', 'GSAP'],
-      image: '/images/web.jpg',
-      github: '#',
-      demo: '#',
-      featured: false,
-      status: 'Terminé',
+      status: 'Prototype',
       duration: '1 mois',
       team: 'Solo',
       highlights: [
-        'Animations 3D avec Three.js',
-        'Score Lighthouse 95+',
-        'Design system cohérent',
-        'Accessibilité WCAG 2.1 AA'
+        'Suivi temps réel',
+        'Configuration intuitive',
+        'Support GPU'
       ],
       metrics: {
-        performance: '95/100',
-        accessibility: '100/100',
-        seo: '92/100'
+        hashes: 'MH/s',
+        profiles: '10+',
+        ui: 'réactive'
+      }
+    },
+    {
+      id: 8,
+      title: 'Securebreaker (Testeur Sécurité)',
+      description: 'Interface de démo en React + TypeScript pour configurer et monitorer des tests de sécurité',
+      category: 'security',
+      technologies: ['React', 'TypeScript', 'Tailwind'],
+      image: '/images/web.jpg',
+      github: 'https://github.com/eulogep',
+      demo: '#',
+      featured: false,
+      status: 'Démo',
+      duration: '2 semaines',
+      team: 'Solo',
+      highlights: [
+        'Panneaux de configuration modulaires',
+        'Multiples protocoles',
+        'Monitoring clair'
+      ],
+      metrics: {
+        modules: '6',
+        coverage: 'large',
+        ux: 'fluide'
       }
     }
   ];
