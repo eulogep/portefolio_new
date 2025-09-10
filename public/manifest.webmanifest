@@ -1,0 +1,17 @@
+{
+  "name": "Euloge Mabiala - Portfolio",
+  "short_name": "Portfolio EM",
+  "start_url": "/portfolio/",
+  "scope": "/portfolio/",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0ea5e9",
+  "description": "Portfolio professionnel d'Euloge Mabiala - Cybersécurité & Développement logiciel",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

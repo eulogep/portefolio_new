@@ -6,15 +6,16 @@ const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Check for saved theme preference or default to dark
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
+    if (savedTheme === 'dark' || savedTheme === 'light') {
       setIsDark(savedTheme === 'dark');
+      return;
     }
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDark(prefersDark);
   }, []);
 
   useEffect(() => {
-    // Apply theme to document
     if (isDark) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -24,9 +25,7 @@ const ThemeToggle = () => {
     }
   }, [isDark]);
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
+  const toggleTheme = () => setIsDark((prev) => !prev);
 
   return (
     <Button
@@ -46,4 +45,3 @@ const ThemeToggle = () => {
 };
 
 export default ThemeToggle;
-
