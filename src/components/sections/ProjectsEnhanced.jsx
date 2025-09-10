@@ -311,7 +311,9 @@ const ProjectsEnhanced = () => {
                         src={project.image} 
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        onError={(e) => {
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.nextSibling.style.display = 'flex';
                         }}
@@ -423,6 +425,8 @@ const ProjectsEnhanced = () => {
                       src={project.image} 
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';
@@ -569,10 +573,12 @@ const ProjectsEnhanced = () => {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <img 
-                    src={selectedProject.image} 
+                  <img
+                    src={selectedProject.image}
                     alt={selectedProject.title}
                     className="w-full h-64 object-cover rounded-lg mb-4"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     {selectedProject.description}
