@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const LazySection = ({ id, children, rootMargin = '200px 0px', className = '' }) => {
+const LazyMount = ({ children, rootMargin = '200px 0px' }) => {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -24,11 +24,8 @@ const LazySection = ({ id, children, rootMargin = '200px 0px', className = '' })
     return () => observer.disconnect();
   }, [rootMargin]);
 
-  return (
-    <section id={id} ref={ref} className={className} aria-labelledby={`${id}-heading`}>
-      {isVisible ? children : null}
-    </section>
-  );
+  if (isVisible) return children;
+  return <div ref={ref} />;
 };
 
-export default LazySection;
+export default LazyMount;
