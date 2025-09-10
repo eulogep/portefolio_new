@@ -137,8 +137,15 @@ const DraggableFloating = () => {
       }}
       className="rounded-full"
     >
-      <div className="glass p-2 rounded-full shadow-neon w-full h-full flex items-center justify-center">
+      <div className="glass p-2 rounded-full shadow-neon w-full h-full flex items-center justify-center relative">
         <ThemeToggle />
+        <button
+          onClick={(e) => { e.stopPropagation(); const v = !locked; setLocked(v); localStorage.setItem(STORAGE_KEY + '_locked', v ? '1' : '0'); }}
+          className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-card/80 border border-primary/10 flex items-center justify-center shadow-sm"
+          title={locked ? 'Déverrouiller la position' : 'Verrouiller la position'}
+        >
+          {locked ? <Unlock size={14} /> : <Lock size={14} />}
+        </button>
       </div>
     </div>
   );
