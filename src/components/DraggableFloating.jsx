@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ThemeToggle from './ThemeToggle';
+import { Lock, Unlock } from 'lucide-react';
 
 const STORAGE_KEY = 'floatingThemePos_v1';
 const SIZE = 64; // approximate size of the floating container
