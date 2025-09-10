@@ -16,6 +16,7 @@ import ParticleBackground from './components/ParticleBackground';
 import Navigation from './components/Navigation';
 import LoadingScreen from './components/LoadingScreen';
 import ScrollToTop from './components/ScrollToTop';
+import ThemeToggle from './components/ThemeToggle';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import ExperienceEnhanced from './components/sections/ExperienceEnhanced';
@@ -62,4 +63,3 @@ function App() {
 }
 
 export default App;
-
