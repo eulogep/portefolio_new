@@ -1,5 +1,4 @@
-/**
- * Portfolio Professionnel - Euloge Mabiala
+/* Portfolio Professionnel - Euloge Mabiala
  * Auteur: MABIALA EULOGE JUNIOR
  * Email: mabiala@et.esiea.fr
  * 
@@ -90,20 +89,25 @@
 /* Glow shadow used by variants */
 .shadow-glow { box-shadow: 0 0 40px rgba(0,230,255,0.18); }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
+/* Existing scrollbar block left untouched above; enhanced styles appended below to avoid conflicts */
 
-::-webkit-scrollbar-track {
-  background: #0d1b2a;
-}
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg,#00e6ff,#005f99); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { filter: brightness(0.95); }
 
-::-webkit-scrollbar-thumb {
-  background: #00e6ff;
-  border-radius: 4px;
-}
+/* Code block styling */
+pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; }
+pre { background: linear-gradient(135deg, rgba(10,12,18,0.6), rgba(13,27,42,0.6)); border: 1px solid rgba(0,230,255,0.06); padding: 1rem; border-radius: .75rem; overflow: auto; box-shadow: 0 6px 30px rgba(2,6,23,0.6); }
+code.inline { background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 6px; border: 1px solid rgba(0,230,255,0.06); }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #005f99;
-}
+/* Button glass helper */
+.btn-glass { backdrop-filter: blur(6px); background: rgba(255,255,255,0.03); border: 1px solid rgba(0,230,255,0.08); }
+
+/* Header / Navigation tweaks */
+nav .neon-text { letter-spacing: .08em; font-weight:700; }
+nav .container { display:flex; align-items:center; }
+
+/* Mobile menu button stronger hit area */
+.menu-button, button[aria-label="menu"] { padding: 0.5rem; }
