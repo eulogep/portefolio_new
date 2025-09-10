@@ -45,7 +45,7 @@ const Contact = () => {
         throw new Error('EmailJS non configuré: service_id et template_id requis');
       }
 
-      emailjs.init({ publicKey });
+      emailjs.init(publicKey);
 
       const templateParams = {
         from_name: formData.name,
