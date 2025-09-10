@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ThemeToggle from './ThemeToggle';
 
 const STORAGE_KEY = 'floatingThemePos_v1';
@@ -8,6 +9,7 @@ const DraggableFloating = () => {
   const ref = useRef(null);
   const draggingRef = useRef(false);
   const offsetRef = useRef({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
 
   const [pos, setPos] = useState({ left: null, top: null });
 
