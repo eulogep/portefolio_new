@@ -53,8 +53,20 @@ const DraggableFloating = () => {
 
   const pendingRef = useRef(null);
   const START_THRESHOLD = 6; // px
+  const [locked, setLocked] = useState(false);
+
+  const onDoubleClick = (e) => {
+    e.stopPropagation();
+    // Recenter to default position
+    setDefaultPos();
+    // Persist
+    const left = Math.max(12, window.innerWidth - SIZE - 24);
+    const top = Math.max(12, window.innerHeight - SIZE - 24);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ left, top }));
+  };
 
   const onPointerDown = (e) => {
+    if (locked) return;
     const el = ref.current;
     if (!el) return;
     // Save initial pointer to detect move vs click
@@ -65,6 +77,7 @@ const DraggableFloating = () => {
   };
 
   const onPointerMove = (e) => {
+    if (locked) return;
     // If a pending pointer exists but actual drag hasn't started, check threshold
     if (pendingRef.current && !draggingRef.current) {
       const dx = e.clientX - pendingRef.current.startX;
@@ -90,6 +103,7 @@ const DraggableFloating = () => {
   };
 
   const onPointerUp = (e) => {
+    if (locked) { pendingRef.current = null; return; }
     // If we were dragging, finalize
     if (draggingRef.current) {
       draggingRef.current = false;
