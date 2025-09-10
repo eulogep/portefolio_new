@@ -49,6 +49,13 @@ function App() {
       <ParticleBackground />
       <Navigation activeSection={activeSection} onSectionChange={handleSectionChange} />
       <ScrollToTop />
+
+      {/* Floating Theme & Palette button */}
+      <div className="fixed right-6 bottom-6 z-50">
+        <div className="glass p-2 rounded-full shadow-neon">
+          <ThemeToggle />
+        </div>
+      </div>
       
       <main>
         <Hero onSectionChange={handleSectionChange} />
