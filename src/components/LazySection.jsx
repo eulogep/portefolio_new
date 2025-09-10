@@ -13,6 +13,7 @@ const LazyMount = ({ children, rootMargin = '200px 0px' }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
+            window.dispatchEvent(new CustomEvent('lazy-section-mounted'));
             observer.disconnect();
           }
         });
