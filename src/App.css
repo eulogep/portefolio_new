@@ -80,9 +80,15 @@
 /* Hover effects */
 .hover-glow:hover {
   box-shadow: 0 0 30px rgba(0, 230, 255, 0.6);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
+  transform: translateY(-4px) scale(1.01);
+  transition: transform 0.28s cubic-bezier(.2,.8,.2,1), box-shadow 0.28s ease;
 }
+
+/* Neon shadow utility */
+.shadow-neon { box-shadow: 0 6px 30px rgba(0,230,255,0.08); }
+
+/* Glow shadow used by variants */
+.shadow-glow { box-shadow: 0 0 40px rgba(0,230,255,0.18); }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
