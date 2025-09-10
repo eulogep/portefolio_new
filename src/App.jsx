@@ -8,7 +8,7 @@
  * présentant les compétences en cybersécurité et développement logiciel
  */
 
-import { useState, lazy, Suspense } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import './App.css';
 
 // Lazy components
@@ -39,6 +39,37 @@ function App() {
   const handleLoadingComplete = () => {
     setIsLoading(false);
   };
+
+  // Update activeSection based on scroll position
+  useEffect(() => {
+    const ids = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter((el) => !!el);
+
+    const visibility = new Map();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          visibility.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+        });
+        let bestId = activeSection;
+        let bestRatio = 0;
+        visibility.forEach((ratio, id) => {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        });
+        if (bestId && bestId !== activeSection) setActiveSection(bestId);
+      },
+      { root: null, rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [activeSection]);
 
   if (isLoading) {
     return (
