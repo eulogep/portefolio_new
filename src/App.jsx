@@ -23,6 +23,7 @@ const SkillsEnhanced = lazy(() => import('./components/sections/SkillsEnhanced')
 const ProjectsEnhanced = lazy(() => import('./components/sections/ProjectsEnhanced'));
 const Contact = lazy(() => import('./components/sections/Contact'));
 import LazyMount from './components/LazySection';
+import { MotionConfig } from 'framer-motion';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -89,13 +90,16 @@ function App() {
 
   if (isLoading) {
     return (
-      <Suspense fallback={null}>
-        <LoadingScreen onComplete={handleLoadingComplete} />
-      </Suspense>
+      <MotionConfig reducedMotion="user">
+        <Suspense fallback={null}>
+          <LoadingScreen onComplete={handleLoadingComplete} />
+        </Suspense>
+      </MotionConfig>
     );
   }
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-background text-foreground">
       <a
         href="#main-content"
@@ -152,6 +156,7 @@ function App() {
         </Suspense>
       </main>
     </div>
+    </MotionConfig>
   );
 }
 
