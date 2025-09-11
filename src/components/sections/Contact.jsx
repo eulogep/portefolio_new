@@ -12,6 +12,7 @@ import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
 import * as emailjs from '@emailjs/browser';
+import { LazyMotion, domAnimation, m } from '@/ui/motion';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -120,15 +121,22 @@ const Contact = () => {
     <section id="contact" className="py-20 relative">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-['Orbitron'] mb-6 neon-text">
-            Contactez-moi
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Vous avez un projet en tête ? Une question ? N'hésitez pas à me contacter !
-          </p>
-        </div>
+        <LazyMotion features={domAnimation}>
+          <m.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold font-['Orbitron'] mb-6 neon-text">
+              Contactez-moi
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Vous avez un projet en tête ? Une question ? N'hésitez pas à me contacter !
+            </p>
+          </m.div>
+        </LazyMotion>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}

@@ -68,6 +68,14 @@
     background: radial-gradient(ellipse at center, #0d1b2a 0%, #000814 100%);
   }
   section { scroll-margin-top: 96px; }
+
+  html[data-test-no-motion] *,
+  html[data-test-no-motion] *::before,
+  html[data-test-no-motion] *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html[data-test-no-motion] { scroll-behavior: auto !important; }
 }
 
 @media (prefers-color-scheme: dark) {
