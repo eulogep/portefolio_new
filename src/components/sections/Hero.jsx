@@ -76,6 +76,8 @@ const Hero = ({ onSectionChange }) => {
               variant="outline"
               size="lg"
               className="px-8 py-4 text-lg font-semibold border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              onClick={() => window.open('https://cdn.builder.io/o/assets%2F5722a3f143814730bd0a8901344be7b3%2Fe06a0e76e19c4734977a4e01fae357fa?alt=media&token=50eba22a-891e-4666-ba2c-469fbd79358a&apiKey=5722a3f143814730bd0a8901344be7b3', '_blank', 'noopener,noreferrer')}
+              aria-label="Télécharger le CV (PDF)"
             >
               <Download className="mr-2" size={20} />
               Télécharger CV
