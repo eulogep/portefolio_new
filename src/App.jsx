@@ -28,6 +28,7 @@ import { MotionConfig } from 'framer-motion';
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
+  const [reducedMode, setReducedMode] = useState('user');
 
   const handleSectionChange = (sectionId) => {
     setActiveSection(sectionId);
@@ -40,6 +41,12 @@ function App() {
   const handleLoadingComplete = () => {
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (typeof document !== 'undefined' && document.documentElement.hasAttribute('data-test-no-motion')) {
+      setReducedMode('always');
+    }
+  }, []);
 
   // Update activeSection based on scroll position
   useEffect(() => {
@@ -90,7 +97,7 @@ function App() {
 
   if (isLoading) {
     return (
-      <MotionConfig reducedMotion="user">
+      <MotionConfig reducedMotion={reducedMode}>
         <Suspense fallback={null}>
           <LoadingScreen onComplete={handleLoadingComplete} />
         </Suspense>
@@ -99,7 +106,7 @@ function App() {
   }
 
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion={reducedMode}>
     <div className="min-h-screen bg-background text-foreground">
       <a
         href="#main-content"
