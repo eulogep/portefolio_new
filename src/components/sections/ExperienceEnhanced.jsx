@@ -10,6 +10,7 @@ import { Calendar, MapPin, ExternalLink, User, Building, Clock, TrendingUp, Awar
 import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
+import { LazyMotion, domAnimation, m } from '@/ui/motion';
 
 const ExperienceEnhanced = () => {
   const [selectedExperience, setSelectedExperience] = useState(0);
@@ -242,15 +243,22 @@ const ExperienceEnhanced = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-['Orbitron'] mb-6 neon-text">
-            Mon Parcours Professionnel
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Une timeline interactive de mon évolution académique et professionnelle dans le domaine de la cybersécurité
-          </p>
-        </div>
+        <LazyMotion features={domAnimation}>
+          <m.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold font-['Orbitron'] mb-6 neon-text">
+              Mon Parcours Professionnel
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Une timeline interactive de mon évolution académique et professionnelle dans le domaine de la cybersécurité
+            </p>
+          </m.div>
+        </LazyMotion>
 
         {/* Timeline Years Header */}
         <div className="hidden lg:flex justify-center mb-8">

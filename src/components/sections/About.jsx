@@ -6,6 +6,7 @@
 
 import { GraduationCap, Shield, Code, Brain } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
+import { LazyMotion, domAnimation, m } from '@/ui/motion';
 
 const About = () => {
   const highlights = [
@@ -35,15 +36,22 @@ const About = () => {
     <section id="about" className="py-20 relative">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-['Orbitron'] mb-6 neon-text">
-            À Propos de Moi
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Découvrez mon parcours, mes passions et ce qui me motive dans le domaine de la technologie
-          </p>
-        </div>
+        <LazyMotion features={domAnimation}>
+          <m.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold font-['Orbitron'] mb-6 neon-text">
+              À Propos de Moi
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Découvrez mon parcours, mes passions et ce qui me motive dans le domaine de la technologie
+            </p>
+          </m.div>
+        </LazyMotion>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
@@ -115,4 +123,3 @@ const About = () => {
 };
 
 export default About;
-

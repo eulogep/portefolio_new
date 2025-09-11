@@ -67,18 +67,20 @@ const Navigation = ({ activeSection, onSectionChange }) => {
               <ThemeToggle />
             </div>
 
-            {/* Mobile Menu Button */}
-            <Button
-              aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-              aria-expanded={isOpen}
-              aria-controls="mobile-nav"
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </Button>
+            {/* Mobile Controls */}
+            <div className="flex items-center space-x-2 md:hidden">
+              <ThemeToggle />
+              <Button
+                aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+                aria-expanded={isOpen}
+                aria-controls="mobile-nav"
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
@@ -94,6 +96,9 @@ const Navigation = ({ activeSection, onSectionChange }) => {
       >
         <div className="absolute inset-0 bg-background/95 backdrop-blur-md" />
         <div className="relative flex flex-col items-center justify-center h-full space-y-8">
+          <div className="absolute top-4 right-4">
+            <ThemeToggle />
+          </div>
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
