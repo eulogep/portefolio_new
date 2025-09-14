@@ -6,7 +6,9 @@
 
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
-import profileImage from '../../assets/photo_euloge.jpg';
+import webpSrcset from '../../assets/photo_euloge.jpg?w=160;192;256;384&format=webp&srcset';
+import jpgSrcset from '../../assets/photo_euloge.jpg?w=160;192;256;384&format=jpg&srcset';
+import jpgFallback from '../../assets/photo_euloge.jpg?w=256&format=jpg&imagetools';
 import { LazyMotion, domAnimation, m } from '@/ui/motion';
 
 const Hero = ({ onSectionChange }) => {
@@ -30,17 +32,20 @@ const Hero = ({ onSectionChange }) => {
           {/* Profile Image */}
           <div className="mb-8 relative">
             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl">
-              <img
-                src={profileImage}
-                alt="Euloge Mabiala"
-                className="w-full h-full object-cover"
-                width="192"
-                height="192"
-                sizes="(max-width: 640px) 160px, 192px"
-                loading="eager"
-                decoding="async"
-                fetchpriority="high"
-              />
+              <picture>
+                <source type="image/webp" srcSet={webpSrcset} sizes="(max-width: 640px) 160px, 192px" />
+                <source type="image/jpeg" srcSet={jpgSrcset} sizes="(max-width: 640px) 160px, 192px" />
+                <img
+                  src={jpgFallback}
+                  alt="Euloge Mabiala"
+                  className="w-full h-full object-cover"
+                  width="192"
+                  height="192"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
+                />
+              </picture>
             </div>
             <div className="absolute inset-0 w-48 h-48 mx-auto rounded-full bg-gradient-to-tr from-primary/20 to-transparent" />
           </div>
