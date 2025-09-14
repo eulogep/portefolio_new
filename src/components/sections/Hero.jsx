@@ -34,6 +34,9 @@ const Hero = ({ onSectionChange }) => {
                 src={profileImage}
                 alt="Euloge Mabiala"
                 className="w-full h-full object-cover"
+                width="192"
+                height="192"
+                sizes="(max-width: 640px) 160px, 192px"
                 loading="eager"
                 decoding="async"
                 fetchpriority="high"
