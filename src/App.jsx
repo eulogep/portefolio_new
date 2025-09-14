@@ -29,6 +29,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
   const [reducedMode, setReducedMode] = useState('user');
+  const [showParticles, setShowParticles] = useState(true);
 
   const handleSectionChange = (sectionId) => {
     setActiveSection(sectionId);
@@ -46,6 +47,25 @@ function App() {
     if (typeof document !== 'undefined' && document.documentElement.hasAttribute('data-test-no-motion')) {
       setReducedMode('always');
     }
+
+    const mqlReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mqlSmall = window.matchMedia('(max-width: 768px)');
+    const compute = () => {
+      const saveData = navigator.connection && navigator.connection.saveData;
+      const prefers = mqlReduce.matches;
+      const small = mqlSmall.matches;
+      setShowParticles(!prefers && !saveData && !small);
+      setReducedMode(prefers ? 'always' : 'user');
+    };
+    compute();
+    const onReduceChange = () => compute();
+    const onSmallChange = () => compute();
+    mqlReduce.addEventListener && mqlReduce.addEventListener('change', onReduceChange);
+    mqlSmall.addEventListener && mqlSmall.addEventListener('change', onSmallChange);
+    return () => {
+      mqlReduce.removeEventListener && mqlReduce.removeEventListener('change', onReduceChange);
+      mqlSmall.removeEventListener && mqlSmall.removeEventListener('change', onSmallChange);
+    };
   }, []);
 
   // Update activeSection based on scroll position
@@ -116,7 +136,7 @@ function App() {
       </a>
 
       <Suspense fallback={null}>
-        <ParticleBackground />
+        {showParticles ? <ParticleBackground /> : null}
       </Suspense>
 
       <Suspense fallback={null}>
