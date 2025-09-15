@@ -13,6 +13,7 @@ import './App.css';
 
 // Lazy components
 const ParticleBackground = lazy(() => import('./components/ParticleBackground'));
+const LightningBackground = lazy(() => import('./components/LightningBackground'));
 const Navigation = lazy(() => import('./components/Navigation'));
 const LoadingScreen = lazy(() => import('./components/LoadingScreen'));
 const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
@@ -29,6 +30,12 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
   const [reducedMode, setReducedMode] = useState('user');
+  const [showParticles, setShowParticles] = useState(true);
+  const [effectsEnabled, setEffectsEnabled] = useState(() => {
+    const saved = localStorage.getItem('effectsEnabled');
+    return saved === null ? true : saved === 'true';
+  });
+  const [bgVariant, setBgVariant] = useState(() => localStorage.getItem('bgVariant') || 'default');
 
   const handleSectionChange = (sectionId) => {
     setActiveSection(sectionId);
@@ -46,7 +53,27 @@ function App() {
     if (typeof document !== 'undefined' && document.documentElement.hasAttribute('data-test-no-motion')) {
       setReducedMode('always');
     }
-  }, []);
+
+    const mqlReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mqlSmall = window.matchMedia('(max-width: 768px)');
+    const compute = () => {
+      const saveData = navigator.connection && navigator.connection.saveData;
+      const prefers = mqlReduce.matches;
+      const small = mqlSmall.matches;
+      const base = !prefers && !saveData && !small;
+      setShowParticles(base && effectsEnabled);
+      setReducedMode(prefers ? 'always' : 'user');
+    };
+    compute();
+    const onReduceChange = () => compute();
+    const onSmallChange = () => compute();
+    mqlReduce.addEventListener && mqlReduce.addEventListener('change', onReduceChange);
+    mqlSmall.addEventListener && mqlSmall.addEventListener('change', onSmallChange);
+    return () => {
+      mqlReduce.removeEventListener && mqlReduce.removeEventListener('change', onReduceChange);
+      mqlSmall.removeEventListener && mqlSmall.removeEventListener('change', onSmallChange);
+    };
+  }, [effectsEnabled]);
 
   // Update activeSection based on scroll position
   useEffect(() => {
@@ -95,6 +122,21 @@ function App() {
     };
   }, [activeSection]);
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-bg-variant', bgVariant);
+    localStorage.setItem('bgVariant', bgVariant);
+  }, [bgVariant]);
+
+  const toggleEffects = () => {
+    const v = !effectsEnabled;
+    setEffectsEnabled(v);
+    localStorage.setItem('effectsEnabled', String(v));
+  };
+
+  const cycleBg = () => {
+    setBgVariant((prev) => (prev === 'default' ? 'purple' : prev === 'purple' ? 'dark' : 'default'));
+  };
+
   if (isLoading) {
     return (
       <MotionConfig reducedMotion={reducedMode}>
@@ -116,11 +158,23 @@ function App() {
       </a>
 
       <Suspense fallback={null}>
-        <ParticleBackground />
+        {showParticles ? (
+          <>
+            <ParticleBackground />
+            <LightningBackground />
+          </>
+        ) : null}
       </Suspense>
 
       <Suspense fallback={null}>
-        <Navigation activeSection={activeSection} onSectionChange={handleSectionChange} />
+        <Navigation
+          activeSection={activeSection}
+          onSectionChange={handleSectionChange}
+          effectsEnabled={effectsEnabled}
+          onToggleEffects={toggleEffects}
+          bgVariant={bgVariant}
+          onCycleBg={cycleBg}
+        />
       </Suspense>
 
       <Suspense fallback={null}>

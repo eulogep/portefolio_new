@@ -11,6 +11,81 @@ import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { LazyMotion, domAnimation, m } from '@/ui/motion';
+// Responsive images imports (WebP + JPEG)
+import web_320_webp from '../../../images/web.jpg?imagetools&w=320&format=webp';
+import web_480_webp from '../../../images/web.jpg?imagetools&w=480&format=webp';
+import web_640_webp from '../../../images/web.jpg?imagetools&w=640&format=webp';
+import web_320_jpg from '../../../images/web.jpg?imagetools&w=320&format=jpeg';
+import web_480_jpg from '../../../images/web.jpg?imagetools&w=480&format=jpeg';
+import web_640_jpg from '../../../images/web.jpg?imagetools&w=640&format=jpeg';
+
+import p1_320_webp from '../../../images/project1NUMERIQUE.jpg?imagetools&w=320&format=webp';
+import p1_480_webp from '../../../images/project1NUMERIQUE.jpg?imagetools&w=480&format=webp';
+import p1_640_webp from '../../../images/project1NUMERIQUE.jpg?imagetools&w=640&format=webp';
+import p1_320_jpg from '../../../images/project1NUMERIQUE.jpg?imagetools&w=320&format=jpeg';
+import p1_480_jpg from '../../../images/project1NUMERIQUE.jpg?imagetools&w=480&format=jpeg';
+import p1_640_jpg from '../../../images/project1NUMERIQUE.jpg?imagetools&w=640&format=jpeg';
+
+import p2_320_webp from '../../../images/project2NUMERIQUE.jpg?imagetools&w=320&format=webp';
+import p2_480_webp from '../../../images/project2NUMERIQUE.jpg?imagetools&w=480&format=webp';
+import p2_640_webp from '../../../images/project2NUMERIQUE.jpg?imagetools&w=640&format=webp';
+import p2_320_jpg from '../../../images/project2NUMERIQUE.jpg?imagetools&w=320&format=jpeg';
+import p2_480_jpg from '../../../images/project2NUMERIQUE.jpg?imagetools&w=480&format=jpeg';
+import p2_640_jpg from '../../../images/project2NUMERIQUE.jpg?imagetools&w=640&format=jpeg';
+
+import p3_320_webp from '../../../images/project3NUMERIQUE.jpg?imagetools&w=320&format=webp';
+import p3_480_webp from '../../../images/project3NUMERIQUE.jpg?imagetools&w=480&format=webp';
+import p3_640_webp from '../../../images/project3NUMERIQUE.jpg?imagetools&w=640&format=webp';
+import p3_320_jpg from '../../../images/project3NUMERIQUE.jpg?imagetools&w=320&format=jpeg';
+import p3_480_jpg from '../../../images/project3NUMERIQUE.jpg?imagetools&w=480&format=jpeg';
+import p3_640_jpg from '../../../images/project3NUMERIQUE.jpg?imagetools&w=640&format=jpeg';
+
+import p4_320_webp from '../../../images/project4NUMERIQUE.jpg?imagetools&w=320&format=webp';
+import p4_480_webp from '../../../images/project4NUMERIQUE.jpg?imagetools&w=480&format=webp';
+import p4_640_webp from '../../../images/project4NUMERIQUE.jpg?imagetools&w=640&format=webp';
+import p4_320_jpg from '../../../images/project4NUMERIQUE.jpg?imagetools&w=320&format=jpeg';
+import p4_480_jpg from '../../../images/project4NUMERIQUE.jpg?imagetools&w=480&format=jpeg';
+import p4_640_jpg from '../../../images/project4NUMERIQUE.jpg?imagetools&w=640&format=jpeg';
+
+import cyber_320_webp from '../../../images/cybersecuritycertification.jpg?imagetools&w=320&format=webp';
+import cyber_480_webp from '../../../images/cybersecuritycertification.jpg?imagetools&w=480&format=webp';
+import cyber_640_webp from '../../../images/cybersecuritycertification.jpg?imagetools&w=640&format=webp';
+import cyber_320_jpg from '../../../images/cybersecuritycertification.jpg?imagetools&w=320&format=jpeg';
+import cyber_480_jpg from '../../../images/cybersecuritycertification.jpg?imagetools&w=480&format=jpeg';
+import cyber_640_jpg from '../../../images/cybersecuritycertification.jpg?imagetools&w=640&format=jpeg';
+
+const imageMap = {
+  web: {
+    webp: `${web_320_webp} 320w, ${web_480_webp} 480w, ${web_640_webp} 640w`,
+    jpg: `${web_320_jpg} 320w, ${web_480_jpg} 480w, ${web_640_jpg} 640w`,
+    fallback: web_480_jpg,
+  },
+  project1: {
+    webp: `${p1_320_webp} 320w, ${p1_480_webp} 480w, ${p1_640_webp} 640w`,
+    jpg: `${p1_320_jpg} 320w, ${p1_480_jpg} 480w, ${p1_640_jpg} 640w`,
+    fallback: p1_480_jpg,
+  },
+  project2: {
+    webp: `${p2_320_webp} 320w, ${p2_480_webp} 480w, ${p2_640_webp} 640w`,
+    jpg: `${p2_320_jpg} 320w, ${p2_480_jpg} 480w, ${p2_640_jpg} 640w`,
+    fallback: p2_480_jpg,
+  },
+  project3: {
+    webp: `${p3_320_webp} 320w, ${p3_480_webp} 480w, ${p3_640_webp} 640w`,
+    jpg: `${p3_320_jpg} 320w, ${p3_480_jpg} 480w, ${p3_640_jpg} 640w`,
+    fallback: p3_480_jpg,
+  },
+  project4: {
+    webp: `${p4_320_webp} 320w, ${p4_480_webp} 480w, ${p4_640_webp} 640w`,
+    jpg: `${p4_320_jpg} 320w, ${p4_480_jpg} 480w, ${p4_640_jpg} 640w`,
+    fallback: p4_480_jpg,
+  },
+  cyber: {
+    webp: `${cyber_320_webp} 320w, ${cyber_480_webp} 480w, ${cyber_640_webp} 640w`,
+    jpg: `${cyber_320_jpg} 320w, ${cyber_480_jpg} 480w, ${cyber_640_jpg} 640w`,
+    fallback: cyber_480_jpg,
+  }
+};
 
 const container = {
   hidden: { opacity: 0 },
@@ -42,7 +117,7 @@ const ProjectsEnhanced = () => {
       description: "Web‑app qui recense les problèmes en Afrique, propose des projets et gère des investissements avec dashboard d'analyse",
       category: 'web',
       technologies: ['Flask', 'SQLite', 'JavaScript', 'Dashboard', 'Glassmorphism'],
-      image: '/images/web.jpg',
+      imageKey: 'web',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: true,
@@ -66,7 +141,7 @@ const ProjectsEnhanced = () => {
       description: 'Gestion documentaire hybride (Electron/Supabase) avec OCR, classification intelligente et recherche avancée',
       category: 'web',
       technologies: ['Electron', 'Supabase', 'React', 'Node/Express', 'Tesseract.js'],
-      image: '/images/project3NUMERIQUE.jpg',
+      imageKey: 'project3',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: true,
@@ -90,7 +165,7 @@ const ProjectsEnhanced = () => {
       description: 'Émission, vérification et gestion de certificats via smart‑contracts et IPFS avec front React moderne',
       category: 'security',
       technologies: ['Vite', 'React', 'Tailwind', 'Ethers.js', 'OpenZeppelin', 'IPFS'],
-      image: '/images/project4NUMERIQUE.jpg',
+      imageKey: 'project4',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: true,
@@ -114,7 +189,7 @@ const ProjectsEnhanced = () => {
       description: 'Interface de swap (ETH, USDC, DAI, WBTC, USDT) sur Uniswap v3 avec simulation de slippage et design néon',
       category: 'web',
       technologies: ['React 18', 'Ethers.js', 'Uniswap v3', 'Tailwind', 'Voice Onboarding'],
-      image: '/images/project1NUMERIQUE.jpg',
+      imageKey: 'project1',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
@@ -138,7 +213,7 @@ const ProjectsEnhanced = () => {
       description: 'Outil pédagogique pour calculer la robustesse d’un mot de passe et simuler des attaques (CPU/GPU/cluster)',
       category: 'security',
       technologies: ['Web Workers', 'Charting', 'HIBP API', 'React'],
-      image: '/images/cybersecuritycertification.jpg',
+      imageKey: 'cyber',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
@@ -162,7 +237,7 @@ const ProjectsEnhanced = () => {
       description: 'Calculatrice web multirôle (standard, scientifique, financier, convertisseur) avec reco vocale et thèmes',
       category: 'web',
       technologies: ['HTML', 'CSS', 'JavaScript', 'Chart.js'],
-      image: '/images/project2NUMERIQUE.jpg',
+      imageKey: 'project2',
       github: 'https://github.com/eulogep/double-calculator',
       demo: '#',
       featured: true,
@@ -186,7 +261,7 @@ const ProjectsEnhanced = () => {
       description: 'App éducative avec règles personnalisables, support GPU via Hashcat et API REST Flask',
       category: 'security',
       technologies: ['Flask', 'Hashcat', 'React', 'Tailwind'],
-      image: '/images/project3NUMERIQUE.jpg',
+      imageKey: 'project3',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
@@ -210,7 +285,7 @@ const ProjectsEnhanced = () => {
       description: 'Interface de démo en React + TypeScript pour configurer et monitorer des tests de sécurité',
       category: 'security',
       technologies: ['React', 'TypeScript', 'Tailwind'],
-      image: '/images/web.jpg',
+      imageKey: 'web',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
@@ -314,17 +389,22 @@ const ProjectsEnhanced = () => {
                     <Card className="glass border-primary/20 group overflow-hidden transform transition-transform duration-500 hover:scale-105">
                       <div className="relative">
                         <div className="h-48 overflow-hidden">
-                          <img 
-                            src={project.image} 
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            loading="lazy"
-                            decoding="async"
-                            onError={(e) => {
-                              e.target.style.display = 'none';
-                              e.target.nextSibling.style.display = 'flex';
-                            }}
-                          />
+                          <picture>
+                            <source type="image/webp" srcSet={imageMap[project.imageKey].webp} sizes="(max-width: 1024px) 50vw, 400px" />
+                            <source type="image/jpeg" srcSet={imageMap[project.imageKey].jpg} sizes="(max-width: 1024px) 50vw, 400px" />
+                            <img
+                              src={imageMap[project.imageKey].fallback}
+                              alt={project.title}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              loading="lazy"
+                              decoding="async"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                const pic = e.target.closest('picture');
+                                if (pic && pic.nextElementSibling) pic.nextElementSibling.style.display = 'flex';
+                              }}
+                            />
+                          </picture>
                           <div className="h-full bg-gradient-to-br from-primary/20 to-secondary/20 hidden items-center justify-center">
                             <CategoryIcon size={48} className="text-primary/50" />
                           </div>
@@ -425,17 +505,22 @@ const ProjectsEnhanced = () => {
                   <Card className="glass border-primary/20 group overflow-hidden transform transition-transform duration-500 hover:scale-105">
                     <div className="relative">
                       <div className="h-48 overflow-hidden">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          loading="lazy"
-                          decoding="async"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'flex';
-                          }}
-                        />
+                        <picture>
+                          <source type="image/webp" srcSet={imageMap[project.imageKey].webp} sizes="(max-width: 1024px) 50vw, 400px" />
+                          <source type="image/jpeg" srcSet={imageMap[project.imageKey].jpg} sizes="(max-width: 1024px) 50vw, 400px" />
+                          <img
+                            src={imageMap[project.imageKey].fallback}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            loading="lazy"
+                            decoding="async"
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                              const pic = e.target.closest('picture');
+                              if (pic && pic.nextElementSibling) pic.nextElementSibling.style.display = 'flex';
+                            }}
+                          />
+                        </picture>
                         <div className="h-full bg-gradient-to-br from-primary/20 to-secondary/20 hidden items-center justify-center">
                           <CategoryIcon size={48} className="text-primary/50" />
                         </div>
@@ -579,13 +664,17 @@ const ProjectsEnhanced = () => {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-64 object-cover rounded-lg mb-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <picture>
+                    <source type="image/webp" srcSet={imageMap[selectedProject.imageKey].webp} sizes="(max-width: 1024px) 80vw, 640px" />
+                    <source type="image/jpeg" srcSet={imageMap[selectedProject.imageKey].jpg} sizes="(max-width: 1024px) 80vw, 640px" />
+                    <img
+                      src={imageMap[selectedProject.imageKey].fallback}
+                      alt={selectedProject.title}
+                      className="w-full h-64 object-cover rounded-lg mb-4"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     {selectedProject.description}
                   </p>
