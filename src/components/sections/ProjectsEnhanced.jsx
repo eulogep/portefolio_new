@@ -117,7 +117,7 @@ const ProjectsEnhanced = () => {
       description: "Web‑app qui recense les problèmes en Afrique, propose des projets et gère des investissements avec dashboard d'analyse",
       category: 'web',
       technologies: ['Flask', 'SQLite', 'JavaScript', 'Dashboard', 'Glassmorphism'],
-      image: '/images/web.jpg',
+      imageKey: 'web',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: true,
@@ -141,7 +141,7 @@ const ProjectsEnhanced = () => {
       description: 'Gestion documentaire hybride (Electron/Supabase) avec OCR, classification intelligente et recherche avancée',
       category: 'web',
       technologies: ['Electron', 'Supabase', 'React', 'Node/Express', 'Tesseract.js'],
-      image: '/images/project3NUMERIQUE.jpg',
+      imageKey: 'project3',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: true,
@@ -165,7 +165,7 @@ const ProjectsEnhanced = () => {
       description: 'Émission, vérification et gestion de certificats via smart‑contracts et IPFS avec front React moderne',
       category: 'security',
       technologies: ['Vite', 'React', 'Tailwind', 'Ethers.js', 'OpenZeppelin', 'IPFS'],
-      image: '/images/project4NUMERIQUE.jpg',
+      imageKey: 'project4',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: true,
@@ -189,7 +189,7 @@ const ProjectsEnhanced = () => {
       description: 'Interface de swap (ETH, USDC, DAI, WBTC, USDT) sur Uniswap v3 avec simulation de slippage et design néon',
       category: 'web',
       technologies: ['React 18', 'Ethers.js', 'Uniswap v3', 'Tailwind', 'Voice Onboarding'],
-      image: '/images/project1NUMERIQUE.jpg',
+      imageKey: 'project1',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
@@ -213,7 +213,7 @@ const ProjectsEnhanced = () => {
       description: 'Outil pédagogique pour calculer la robustesse d’un mot de passe et simuler des attaques (CPU/GPU/cluster)',
       category: 'security',
       technologies: ['Web Workers', 'Charting', 'HIBP API', 'React'],
-      image: '/images/cybersecuritycertification.jpg',
+      imageKey: 'cyber',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
@@ -237,7 +237,7 @@ const ProjectsEnhanced = () => {
       description: 'Calculatrice web multirôle (standard, scientifique, financier, convertisseur) avec reco vocale et thèmes',
       category: 'web',
       technologies: ['HTML', 'CSS', 'JavaScript', 'Chart.js'],
-      image: '/images/project2NUMERIQUE.jpg',
+      imageKey: 'project2',
       github: 'https://github.com/eulogep/double-calculator',
       demo: '#',
       featured: true,
@@ -261,7 +261,7 @@ const ProjectsEnhanced = () => {
       description: 'App éducative avec règles personnalisables, support GPU via Hashcat et API REST Flask',
       category: 'security',
       technologies: ['Flask', 'Hashcat', 'React', 'Tailwind'],
-      image: '/images/project3NUMERIQUE.jpg',
+      imageKey: 'project3',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
@@ -285,7 +285,7 @@ const ProjectsEnhanced = () => {
       description: 'Interface de démo en React + TypeScript pour configurer et monitorer des tests de sécurité',
       category: 'security',
       technologies: ['React', 'TypeScript', 'Tailwind'],
-      image: '/images/web.jpg',
+      imageKey: 'web',
       github: 'https://github.com/eulogep',
       demo: '#',
       featured: false,
@@ -389,17 +389,22 @@ const ProjectsEnhanced = () => {
                     <Card className="glass border-primary/20 group overflow-hidden transform transition-transform duration-500 hover:scale-105">
                       <div className="relative">
                         <div className="h-48 overflow-hidden">
-                          <img 
-                            src={project.image} 
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            loading="lazy"
-                            decoding="async"
-                            onError={(e) => {
-                              e.target.style.display = 'none';
-                              e.target.nextSibling.style.display = 'flex';
-                            }}
-                          />
+                          <picture>
+                            <source type="image/webp" srcSet={imageMap[project.imageKey].webp} sizes="(max-width: 1024px) 50vw, 400px" />
+                            <source type="image/jpeg" srcSet={imageMap[project.imageKey].jpg} sizes="(max-width: 1024px) 50vw, 400px" />
+                            <img
+                              src={imageMap[project.imageKey].fallback}
+                              alt={project.title}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              loading="lazy"
+                              decoding="async"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                const pic = e.target.closest('picture');
+                                if (pic && pic.nextElementSibling) pic.nextElementSibling.style.display = 'flex';
+                              }}
+                            />
+                          </picture>
                           <div className="h-full bg-gradient-to-br from-primary/20 to-secondary/20 hidden items-center justify-center">
                             <CategoryIcon size={48} className="text-primary/50" />
                           </div>
@@ -500,17 +505,22 @@ const ProjectsEnhanced = () => {
                   <Card className="glass border-primary/20 group overflow-hidden transform transition-transform duration-500 hover:scale-105">
                     <div className="relative">
                       <div className="h-48 overflow-hidden">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          loading="lazy"
-                          decoding="async"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'flex';
-                          }}
-                        />
+                        <picture>
+                          <source type="image/webp" srcSet={imageMap[project.imageKey].webp} sizes="(max-width: 1024px) 50vw, 400px" />
+                          <source type="image/jpeg" srcSet={imageMap[project.imageKey].jpg} sizes="(max-width: 1024px) 50vw, 400px" />
+                          <img
+                            src={imageMap[project.imageKey].fallback}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            loading="lazy"
+                            decoding="async"
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                              const pic = e.target.closest('picture');
+                              if (pic && pic.nextElementSibling) pic.nextElementSibling.style.display = 'flex';
+                            }}
+                          />
+                        </picture>
                         <div className="h-full bg-gradient-to-br from-primary/20 to-secondary/20 hidden items-center justify-center">
                           <CategoryIcon size={48} className="text-primary/50" />
                         </div>
@@ -654,13 +664,17 @@ const ProjectsEnhanced = () => {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-64 object-cover rounded-lg mb-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <picture>
+                    <source type="image/webp" srcSet={imageMap[selectedProject.imageKey].webp} sizes="(max-width: 1024px) 80vw, 640px" />
+                    <source type="image/jpeg" srcSet={imageMap[selectedProject.imageKey].jpg} sizes="(max-width: 1024px) 80vw, 640px" />
+                    <img
+                      src={imageMap[selectedProject.imageKey].fallback}
+                      alt={selectedProject.title}
+                      className="w-full h-64 object-cover rounded-lg mb-4"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     {selectedProject.description}
                   </p>
