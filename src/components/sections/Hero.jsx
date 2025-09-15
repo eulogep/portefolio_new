@@ -6,7 +6,14 @@
 
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
-import pictureData from '../../assets/photo_euloge.jpg?imagetools&width=160;192;256;384&format=webp;jpeg&as=picture';
+import jpg160 from '../../assets/photo_euloge.jpg?imagetools&w=160&format=jpeg';
+import jpg192 from '../../assets/photo_euloge.jpg?imagetools&w=192&format=jpeg';
+import jpg256 from '../../assets/photo_euloge.jpg?imagetools&w=256&format=jpeg';
+import jpg384 from '../../assets/photo_euloge.jpg?imagetools&w=384&format=jpeg';
+import webp160 from '../../assets/photo_euloge.jpg?imagetools&w=160&format=webp';
+import webp192 from '../../assets/photo_euloge.jpg?imagetools&w=192&format=webp';
+import webp256 from '../../assets/photo_euloge.jpg?imagetools&w=256&format=webp';
+import webp384 from '../../assets/photo_euloge.jpg?imagetools&w=384&format=webp';
 import { LazyMotion, domAnimation, m } from '@/ui/motion';
 
 const Hero = ({ onSectionChange }) => {
@@ -31,11 +38,18 @@ const Hero = ({ onSectionChange }) => {
           <div className="mb-8 relative">
             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl">
               <picture>
-                {pictureData.sources.map((s, i) => (
-                  <source key={i} type={s.type} srcSet={s.srcset} sizes="(max-width: 640px) 160px, 192px" />
-                ))}
+                <source
+                  type="image/webp"
+                  srcSet={`${webp160} 160w, ${webp192} 192w, ${webp256} 256w, ${webp384} 384w`}
+                  sizes="(max-width: 640px) 160px, 192px"
+                />
+                <source
+                  type="image/jpeg"
+                  srcSet={`${jpg160} 160w, ${jpg192} 192w, ${jpg256} 256w, ${jpg384} 384w`}
+                  sizes="(max-width: 640px) 160px, 192px"
+                />
                 <img
-                  src={pictureData.img.src}
+                  src={jpg192}
                   alt="Euloge Mabiala"
                   className="w-full h-full object-cover"
                   width="192"
