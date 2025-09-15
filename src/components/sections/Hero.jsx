@@ -6,9 +6,7 @@
 
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
-import webpSrcset from '../../assets/photo_euloge.jpg?imagetools&format=webp&width=160;192;256;384&srcset';
-import jpgSrcset from '../../assets/photo_euloge.jpg?imagetools&format=jpeg&width=160;192;256;384&srcset';
-import jpgFallback from '../../assets/photo_euloge.jpg?imagetools&format=jpeg&width=192';
+import pictureData from '../../assets/photo_euloge.jpg?imagetools&width=160;192;256;384&format=webp;jpeg&as=picture';
 import { LazyMotion, domAnimation, m } from '@/ui/motion';
 
 const Hero = ({ onSectionChange }) => {
@@ -33,10 +31,11 @@ const Hero = ({ onSectionChange }) => {
           <div className="mb-8 relative">
             <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-primary/50 shadow-2xl">
               <picture>
-                <source type="image/webp" srcSet={webpSrcset} sizes="(max-width: 640px) 160px, 192px" />
-                <source type="image/jpeg" srcSet={jpgSrcset} sizes="(max-width: 640px) 160px, 192px" />
+                {pictureData.sources.map((s, i) => (
+                  <source key={i} type={s.type} srcSet={s.srcset} sizes="(max-width: 640px) 160px, 192px" />
+                ))}
                 <img
-                  src={jpgFallback}
+                  src={pictureData.img.src}
                   alt="Euloge Mabiala"
                   className="w-full h-full object-cover"
                   width="192"
