@@ -13,6 +13,7 @@ import './App.css';
 
 // Lazy components
 const ParticleBackground = lazy(() => import('./components/ParticleBackground'));
+const LightningBackground = lazy(() => import('./components/LightningBackground'));
 const Navigation = lazy(() => import('./components/Navigation'));
 const LoadingScreen = lazy(() => import('./components/LoadingScreen'));
 const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
@@ -136,7 +137,12 @@ function App() {
       </a>
 
       <Suspense fallback={null}>
-        {showParticles ? <ParticleBackground /> : null}
+        {showParticles ? (
+          <>
+            <ParticleBackground />
+            <LightningBackground />
+          </>
+        ) : null}
       </Suspense>
 
       <Suspense fallback={null}>
