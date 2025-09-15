@@ -6,9 +6,9 @@
 
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '../ui/button';
-import webpSrcset from '../../assets/photo_euloge.jpg?w=160;192;256;384&format=webp&srcset';
-import jpgSrcset from '../../assets/photo_euloge.jpg?w=160;192;256;384&format=jpg&srcset';
-import jpgFallback from '../../assets/photo_euloge.jpg?w=256&format=jpg&imagetools';
+import webpSrcset from '../../assets/photo_euloge.jpg?imagetools&format=webp&width=160;192;256;384&srcset';
+import jpgSrcset from '../../assets/photo_euloge.jpg?imagetools&format=jpeg&width=160;192;256;384&srcset';
+import jpgFallback from '../../assets/photo_euloge.jpg?imagetools&format=jpeg&width=192';
 import { LazyMotion, domAnimation, m } from '@/ui/motion';
 
 const Hero = ({ onSectionChange }) => {
