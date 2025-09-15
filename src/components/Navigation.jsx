@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Home, User, Briefcase, Award, Heart, FolderOpen, Mail } from 'lucide-react';
 import { Button } from './ui/button';
 import ThemeToggle from './ThemeToggle';
+import EffectsToggle from './EffectsToggle';
 
-const Navigation = ({ activeSection, onSectionChange }) => {
+const Navigation = ({ activeSection, onSectionChange, effectsEnabled, onToggleEffects, bgVariant, onCycleBg }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -64,6 +65,7 @@ const Navigation = ({ activeSection, onSectionChange }) => {
                   </button>
                 );
               })}
+              <EffectsToggle enabled={effectsEnabled} onToggle={onToggleEffects} bgVariant={bgVariant} onCycleBg={onCycleBg} />
               <ThemeToggle />
             </div>
 
@@ -96,7 +98,8 @@ const Navigation = ({ activeSection, onSectionChange }) => {
       >
         <div className="absolute inset-0 bg-background/95 backdrop-blur-md" />
         <div className="relative flex flex-col items-center justify-center h-full space-y-8">
-          <div className="absolute top-4 right-4">
+          <div className="absolute top-4 right-4 flex items-center space-x-2">
+            <EffectsToggle enabled={effectsEnabled} onToggle={onToggleEffects} bgVariant={bgVariant} onCycleBg={onCycleBg} />
             <ThemeToggle />
           </div>
           {navItems.map((item) => {
