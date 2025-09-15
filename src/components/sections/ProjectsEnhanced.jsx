@@ -11,6 +11,81 @@ import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { LazyMotion, domAnimation, m } from '@/ui/motion';
+// Responsive images imports (WebP + JPEG)
+import web_320_webp from '../../../images/web.jpg?imagetools&w=320&format=webp';
+import web_480_webp from '../../../images/web.jpg?imagetools&w=480&format=webp';
+import web_640_webp from '../../../images/web.jpg?imagetools&w=640&format=webp';
+import web_320_jpg from '../../../images/web.jpg?imagetools&w=320&format=jpeg';
+import web_480_jpg from '../../../images/web.jpg?imagetools&w=480&format=jpeg';
+import web_640_jpg from '../../../images/web.jpg?imagetools&w=640&format=jpeg';
+
+import p1_320_webp from '../../../images/project1NUMERIQUE.jpg?imagetools&w=320&format=webp';
+import p1_480_webp from '../../../images/project1NUMERIQUE.jpg?imagetools&w=480&format=webp';
+import p1_640_webp from '../../../images/project1NUMERIQUE.jpg?imagetools&w=640&format=webp';
+import p1_320_jpg from '../../../images/project1NUMERIQUE.jpg?imagetools&w=320&format=jpeg';
+import p1_480_jpg from '../../../images/project1NUMERIQUE.jpg?imagetools&w=480&format=jpeg';
+import p1_640_jpg from '../../../images/project1NUMERIQUE.jpg?imagetools&w=640&format=jpeg';
+
+import p2_320_webp from '../../../images/project2NUMERIQUE.jpg?imagetools&w=320&format=webp';
+import p2_480_webp from '../../../images/project2NUMERIQUE.jpg?imagetools&w=480&format=webp';
+import p2_640_webp from '../../../images/project2NUMERIQUE.jpg?imagetools&w=640&format=webp';
+import p2_320_jpg from '../../../images/project2NUMERIQUE.jpg?imagetools&w=320&format=jpeg';
+import p2_480_jpg from '../../../images/project2NUMERIQUE.jpg?imagetools&w=480&format=jpeg';
+import p2_640_jpg from '../../../images/project2NUMERIQUE.jpg?imagetools&w=640&format=jpeg';
+
+import p3_320_webp from '../../../images/project3NUMERIQUE.jpg?imagetools&w=320&format=webp';
+import p3_480_webp from '../../../images/project3NUMERIQUE.jpg?imagetools&w=480&format=webp';
+import p3_640_webp from '../../../images/project3NUMERIQUE.jpg?imagetools&w=640&format=webp';
+import p3_320_jpg from '../../../images/project3NUMERIQUE.jpg?imagetools&w=320&format=jpeg';
+import p3_480_jpg from '../../../images/project3NUMERIQUE.jpg?imagetools&w=480&format=jpeg';
+import p3_640_jpg from '../../../images/project3NUMERIQUE.jpg?imagetools&w=640&format=jpeg';
+
+import p4_320_webp from '../../../images/project4NUMERIQUE.jpg?imagetools&w=320&format=webp';
+import p4_480_webp from '../../../images/project4NUMERIQUE.jpg?imagetools&w=480&format=webp';
+import p4_640_webp from '../../../images/project4NUMERIQUE.jpg?imagetools&w=640&format=webp';
+import p4_320_jpg from '../../../images/project4NUMERIQUE.jpg?imagetools&w=320&format=jpeg';
+import p4_480_jpg from '../../../images/project4NUMERIQUE.jpg?imagetools&w=480&format=jpeg';
+import p4_640_jpg from '../../../images/project4NUMERIQUE.jpg?imagetools&w=640&format=jpeg';
+
+import cyber_320_webp from '../../../images/cybersecuritycertification.jpg?imagetools&w=320&format=webp';
+import cyber_480_webp from '../../../images/cybersecuritycertification.jpg?imagetools&w=480&format=webp';
+import cyber_640_webp from '../../../images/cybersecuritycertification.jpg?imagetools&w=640&format=webp';
+import cyber_320_jpg from '../../../images/cybersecuritycertification.jpg?imagetools&w=320&format=jpeg';
+import cyber_480_jpg from '../../../images/cybersecuritycertification.jpg?imagetools&w=480&format=jpeg';
+import cyber_640_jpg from '../../../images/cybersecuritycertification.jpg?imagetools&w=640&format=jpeg';
+
+const imageMap = {
+  web: {
+    webp: `${web_320_webp} 320w, ${web_480_webp} 480w, ${web_640_webp} 640w`,
+    jpg: `${web_320_jpg} 320w, ${web_480_jpg} 480w, ${web_640_jpg} 640w`,
+    fallback: web_480_jpg,
+  },
+  project1: {
+    webp: `${p1_320_webp} 320w, ${p1_480_webp} 480w, ${p1_640_webp} 640w`,
+    jpg: `${p1_320_jpg} 320w, ${p1_480_jpg} 480w, ${p1_640_jpg} 640w`,
+    fallback: p1_480_jpg,
+  },
+  project2: {
+    webp: `${p2_320_webp} 320w, ${p2_480_webp} 480w, ${p2_640_webp} 640w`,
+    jpg: `${p2_320_jpg} 320w, ${p2_480_jpg} 480w, ${p2_640_jpg} 640w`,
+    fallback: p2_480_jpg,
+  },
+  project3: {
+    webp: `${p3_320_webp} 320w, ${p3_480_webp} 480w, ${p3_640_webp} 640w`,
+    jpg: `${p3_320_jpg} 320w, ${p3_480_jpg} 480w, ${p3_640_jpg} 640w`,
+    fallback: p3_480_jpg,
+  },
+  project4: {
+    webp: `${p4_320_webp} 320w, ${p4_480_webp} 480w, ${p4_640_webp} 640w`,
+    jpg: `${p4_320_jpg} 320w, ${p4_480_jpg} 480w, ${p4_640_jpg} 640w`,
+    fallback: p4_480_jpg,
+  },
+  cyber: {
+    webp: `${cyber_320_webp} 320w, ${cyber_480_webp} 480w, ${cyber_640_webp} 640w`,
+    jpg: `${cyber_320_jpg} 320w, ${cyber_480_jpg} 480w, ${cyber_640_jpg} 640w`,
+    fallback: cyber_480_jpg,
+  }
+};
 
 const container = {
   hidden: { opacity: 0 },
