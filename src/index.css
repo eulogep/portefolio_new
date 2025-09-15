@@ -67,6 +67,9 @@
   .dark body {
     background: radial-gradient(ellipse at center, #0d1b2a 0%, #000814 100%);
   }
+  /* Custom background variants */
+  html[data-bg-variant='purple'] body { background: radial-gradient(ellipse at center, rgba(76,29,149,0.35) 0%, rgba(15,14,36,0.95) 100%); }
+  html[data-bg-variant='dark'] body { background: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 100%); }
   section { scroll-margin-top: 96px; }
 
   html[data-test-no-motion] *,
